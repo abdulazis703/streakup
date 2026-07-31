@@ -12,6 +12,8 @@ import { useSettings } from '@/lib/context/SettingsContext';
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  currentStreak?: number;
+  userName?: string;
 }
 
 // ─── Notification type ───────────────────────────────────────────────────────
