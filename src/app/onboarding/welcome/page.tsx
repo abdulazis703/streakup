@@ -4,45 +4,46 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase/client';
 import { useAuth } from '@/lib/context/AuthContext';
-import ForceLightMode from '@/components/ForceLightMode';
 
 // ─────────────────────────────────────────────
 // Data
 // ─────────────────────────────────────────────
 const CATEGORIES = [
-  { id: 'health',       label: 'Kesehatan',    emoji: '❤️', color: '#FF8FAB', bg: 'rgba(255,143,171,0.15)' },
-  { id: 'mindful',      label: 'Mindfulness',  emoji: '🧘', color: '#7ED9A5', bg: 'rgba(126,217,165,0.15)' },
-  { id: 'learning',     label: 'Belajar',      emoji: '📚', color: '#A78BFA', bg: 'rgba(167,139,250,0.15)' },
-  { id: 'fitness',      label: 'Olahraga',     emoji: '🏃', color: '#FBA94C', bg: 'rgba(251,169,76,0.15)'  },
-  { id: 'productivity', label: 'Produktif',    emoji: '🚀', color: '#60A5FA', bg: 'rgba(96,165,250,0.15)'  },
-  { id: 'hobby',        label: 'Hobi',         emoji: '🎨', color: '#F472B6', bg: 'rgba(244,114,182,0.15)' },
+  { id: 'learning', label: 'Belajar', icon: 'school' },
+  { id: 'health', label: 'Kesehatan', icon: 'favorite' },
+  { id: 'fitness', label: 'Olahraga', icon: 'fitness_center' },
+  { id: 'productivity', label: 'Produktif', icon: 'work' },
+  { id: 'hobby', label: 'Hobi', icon: 'palette' },
+  { id: 'mindful', label: 'Mindful', icon: 'self_improvement' },
 ];
 
 const CATEGORY_MAP: Record<string, string> = {
-  learning: 'Belajar', health: 'Kesehatan', fitness: 'Olahraga',
-  productivity: 'Produktif', hobby: 'Hobi', mindful: 'Mindfulness',
+  learning: 'Belajar',
+  health: 'Kesehatan',
+  fitness: 'Olahraga',
+  productivity: 'Produktif',
+  hobby: 'Hobi',
+  mindful: 'Mindfulness',
 };
 
-// Star indicator component
-function StarDot({ active, done }: { active: boolean; done: boolean }) {
-  return (
-    <span className="text-lg transition-all duration-300" style={{
-      opacity: active ? 1 : done ? 0.7 : 0.3,
-      filter: active ? 'drop-shadow(0 0 6px rgba(192,132,252,0.8))' : 'none',
-      transform: active ? 'scale(1.3)' : 'scale(1)',
-      display: 'inline-block',
-    }}>
-      {done ? '⭐' : active ? '🌟' : '✦'}
-    </span>
-  );
-}
+const HABITS_LIST = [
+  { id: 'h1', title: 'Minum air 2L', category: 'health', icon: 'water_drop', color: '#ff8c69' },
+  { id: 'h2', title: 'Meditasi 5 menit', category: 'mindful', icon: 'self_improvement', color: '#63bd8b' },
+  { id: 'h3', title: 'Membaca 10 halaman', category: 'learning', icon: 'menu_book', color: '#ffb59f' },
+  { id: 'h4', title: 'Jalan pagi 15 menit', category: 'fitness', icon: 'directions_run', color: '#cabeff' },
+  { id: 'h5', title: 'Journaling', category: 'mindful', icon: 'edit_note', color: '#b7a8fe' },
+];
 
+// ─────────────────────────────────────────────
+// Component
+// ─────────────────────────────────────────────
 export default function OnboardingFlow() {
   const router = useRouter();
   const { refreshHabits } = useAuth();
 
   const [step, setStep] = useState(1);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedHabitIds, setSelectedHabitIds] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
@@ -52,17 +53,34 @@ export default function OnboardingFlow() {
     );
   };
 
+  const toggleHabit = (id: string) => {
+    setSelectedHabitIds(prev =>
+      prev.includes(id) ? prev.filter(x => x !== id) : prev.length < 3 ? [...prev, id] : prev
+    );
+  };
+
   const nextStep = () => setStep(s => Math.min(s + 1, 3));
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
+  // ── Save selected habits to Supabase ──
   const saveOnboardingAndFinish = async () => {
     setSaving(true);
     setSaveError(null);
+
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error('User tidak ditemukan.');
-      await supabase.from('profiles').update({ onboarding_completed: true }).eq('id', user.id);
+      if (!user) throw new Error('User tidak ditemukan. Silakan login ulang.');
+
+      // Mark onboarding as complete
+      await supabase
+        .from('profiles')
+        .update({ onboarding_completed: true })
+        .eq('id', user.id);
+
+      // Refresh global habits state
       await refreshHabits();
+
+      // Go to step 3 (ready)
       nextStep();
     } catch (e: unknown) {
       setSaveError(e instanceof Error ? e.message : 'Terjadi kesalahan. Coba lagi.');
@@ -71,249 +89,231 @@ export default function OnboardingFlow() {
     }
   };
 
-  // ── STEP 1: WELCOME ──
+  // ─────────────────────────────────────────────
+  // STEP 1: WELCOME
+  // ─────────────────────────────────────────────
   const renderStep1 = () => (
-    <div className="flex flex-col items-center text-center w-full">
-      {/* Mascot */}
-      <div className="relative mb-8" style={{ animation: 'cozyFloat 4s ease-in-out infinite' }}>
-        <div className="w-36 h-36 rounded-full flex items-center justify-center text-7xl shadow-2xl"
-          style={{
-            background: 'linear-gradient(135deg, #FFE4EC, #E8D5FF)',
-            boxShadow: '0 20px 60px rgba(192,132,252,0.35), 0 0 0 10px rgba(255,200,230,0.2)',
-          }}>
-          🌟
-        </div>
-        <div className="absolute -top-2 -right-2 text-2xl" style={{ animation: 'cozyFloat 2.5s ease-in-out 0.3s infinite' }}>✨</div>
-        <div className="absolute -bottom-2 -left-3 text-xl" style={{ animation: 'cozyFloat 3s ease-in-out 0.8s infinite' }}>💫</div>
-        <div className="absolute top-4 -left-6 text-lg" style={{ animation: 'cozyFloat 2.8s ease-in-out 0.5s infinite' }}>⭐</div>
+    <div className="flex flex-col items-center justify-center flex-1 text-center w-full my-auto py-4" style={{ width: '100%' }}>
+      <div className="w-52 h-52 sm:w-64 sm:h-64 mx-auto mb-6 bg-orange-50 rounded-full flex items-center justify-center relative shadow-inner overflow-hidden border border-orange-100 shrink-0">
+        <span className="material-symbols-outlined text-[100px] sm:text-[120px] text-[#A04223] opacity-80">emoji_nature</span>
       </div>
 
-      <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-3">
-        Selamat Datang, <span style={{ color: '#C084FC' }}>Pahlawan!</span> 🎉
-      </h2>
-      <p className="text-slate-500 text-base mb-8 max-w-sm leading-relaxed">
-        Kami akan membantumu membangun kebiasaan ajaib dalam 3 langkah mudah yang menyenangkan!
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4 w-full" style={{ whiteSpace: 'normal' }}>
+        Selamat datang di <span className="text-[#A04223] italic">Streak Up!</span>
+      </h1>
+
+      <p className="text-slate-500 text-sm md:text-base mb-8 leading-relaxed mx-auto" style={{ whiteSpace: 'normal', maxWidth: '480px', display: 'block' }}>
+        Mari mulai perjalanan kecilmu menuju kebiasaan yang lebih baik dengan langkah-langkah lembut setiap hari.
       </p>
 
-      {/* Steps preview */}
-      <div className="flex flex-col gap-3 w-full max-w-xs mb-8">
-        {[
-          ['🌈', 'Pilih Area Fokus'],
-          ['✅', 'Selesaikan Onboarding'],
-          ['🚀', 'Mulai Petualangan!'],
-        ].map(([emoji, label], i) => (
-          <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-2xl text-left"
-            style={{ background: 'rgba(243,232,255,0.5)', border: '1px solid rgba(192,132,252,0.2)' }}>
-            <span className="text-xl">{emoji}</span>
-            <span className="font-semibold text-slate-700 text-sm">{label}</span>
-          </div>
-        ))}
+      <div className="w-full flex flex-col items-center gap-4" style={{ maxWidth: '360px' }}>
+        <button
+          onClick={nextStep}
+          className="w-full py-3.5 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_8px_20px_rgba(192,132,252,0.3)] hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(192,132,252,0.4)] cursor-pointer"
+          style={{ width: '100%', display: 'flex', background: 'linear-gradient(135deg, #FF6B9D, #C084FC)' }}
+        >
+          <span>Lanjut</span>
+          <span className="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+        <button
+          onClick={() => router.push('/dashboard')}
+          className="text-xs font-semibold text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+        >
+          Lewati Onboarding
+        </button>
       </div>
-
-      <button
-        onClick={nextStep}
-        className="w-full max-w-xs py-4 text-white font-extrabold rounded-3xl shadow-xl hover:scale-105 transition-all"
-        style={{ background: 'linear-gradient(135deg, #FF6B9D, #C084FC)', boxShadow: '0 10px 40px rgba(192,132,252,0.4)' }}>
-        Ayo Mulai! ✨
-      </button>
-      <button
-        onClick={() => router.push('/dashboard')}
-        className="mt-3 text-xs text-slate-400 hover:text-slate-600 transition-colors">
-        Lewati Onboarding
-      </button>
     </div>
   );
 
-  // ── STEP 2: CATEGORIES ──
+  // ─────────────────────────────────────────────
+  // STEP 2: CATEGORIES
+  // ─────────────────────────────────────────────
   const renderStep2 = () => (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col flex-1 w-full max-w-2xl mx-auto h-full justify-between" style={{ width: '100%' }}>
       <div className="text-center mb-6">
-        <div className="text-5xl mb-3" style={{ animation: 'cozyFloat 3s ease-in-out infinite' }}>🌈</div>
-        <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">
-          Apa Area Fokusmu? ✨
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-2" style={{ whiteSpace: 'normal', width: '100%' }}>
+          Pilih kategori yang kamu minati
         </h2>
-        <p className="text-slate-500 text-sm max-w-sm mx-auto">
-          Pilih hingga 3 area yang ingin kamu kembangkan. Kami akan menyesuaikan pengalamanmu!
+        <p className="text-slate-500 text-sm" style={{ whiteSpace: 'normal', width: '100%' }}>
+          Kami akan menyesuaikan rekomendasi berdasarkan pilihanmu. (Maks. 3)
         </p>
       </div>
 
       {saveError && (
-        <div className="mb-4 p-4 rounded-2xl text-sm" style={{ background: '#FFF0F0', border: '1px solid #FFCDD2', color: '#E57373' }}>
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-xl">
           {saveError}
         </div>
       )}
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 w-full">
         {CATEGORIES.map(cat => {
           const isSelected = selectedCategories.includes(cat.id);
           return (
             <button
               key={cat.id}
               onClick={() => toggleCategory(cat.id)}
-              className="relative flex flex-col items-center gap-2 p-5 rounded-3xl transition-all duration-300 hover:scale-105 cursor-pointer"
-              style={{
-                background: isSelected ? cat.bg : 'rgba(255,255,255,0.7)',
-                border: `2px solid ${isSelected ? cat.color : 'rgba(200,200,200,0.3)'}`,
-                boxShadow: isSelected ? `0 8px 24px ${cat.color}30` : '0 2px 8px rgba(0,0,0,0.04)',
-                transform: isSelected ? 'scale(1.04)' : 'scale(1)',
-              }}
+              className={`relative p-5 sm:p-6 rounded-2xl flex flex-col items-center gap-3 transition-all cursor-pointer backdrop-blur-sm ${
+                isSelected
+                  ? 'border-2 border-violet-400 bg-white/70 shadow-lg scale-[1.02]'
+                  : 'border-2 border-white/60 bg-white/40 hover:border-white hover:bg-white/60'
+              }`}
+              style={{ width: '100%' }}
             >
               {isSelected && (
-                <div className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                  style={{ background: cat.color }}>
-                  ✓
+                <div className="absolute top-3 right-3 w-5 h-5 bg-violet-500 rounded-full flex items-center justify-center">
+                  <span className="material-symbols-outlined text-white text-[12px]">check</span>
                 </div>
               )}
-              <span className="text-3xl">{cat.emoji}</span>
-              <span className="font-bold text-slate-700 text-sm">{cat.label}</span>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isSelected ? 'bg-violet-100 text-violet-600' : 'bg-white/60 text-slate-500'}`}>
+                <span className="material-symbols-outlined text-[24px]">{cat.icon}</span>
+              </div>
+              <span className={`font-semibold text-sm ${isSelected ? 'text-violet-600' : 'text-slate-700'}`} style={{ whiteSpace: 'normal' }}>
+                {cat.label}
+              </span>
             </button>
           );
         })}
       </div>
 
-      <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-        <button onClick={prevStep} className="px-5 py-2.5 text-slate-400 hover:text-slate-600 font-semibold text-sm transition-colors">
-          ← Kembali
+      <div className="flex items-center justify-between pt-4 border-t border-slate-100 w-full mt-auto">
+        <button onClick={prevStep} disabled={saving} className="px-5 py-2.5 text-slate-500 hover:text-slate-800 font-medium transition-colors text-sm cursor-pointer disabled:opacity-50">
+          Kembali
         </button>
-        <span className="text-xs font-bold tracking-widest" style={{ color: '#C084FC' }}>
-          {selectedCategories.length}/3 ✨
+        <span className="text-[11px] font-bold text-slate-400 tracking-wider">
+          {selectedCategories.length}/3 TERPILIH
         </span>
         <button
           onClick={saveOnboardingAndFinish}
           disabled={selectedCategories.length === 0 || saving}
-          className="px-7 py-2.5 rounded-2xl font-bold text-sm text-white transition-all disabled:opacity-50 hover:scale-105"
-          style={{ background: 'linear-gradient(135deg, #FF6B9D, #C084FC)' }}>
-          {saving ? '✨ Menyimpan...' : 'Lanjut →'}
+          className={`px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 text-sm transition-all cursor-pointer ${
+            selectedCategories.length > 0 && !saving
+              ? 'text-white shadow-[0_8px_20px_rgba(192,132,252,0.3)] hover:-translate-y-0.5'
+              : 'bg-white/50 text-slate-400 cursor-not-allowed border border-white/60'
+          }`}
+          style={{ background: selectedCategories.length > 0 && !saving ? 'linear-gradient(135deg, #FF6B9D, #C084FC)' : undefined }}
+        >
+          {saving ? (
+            <>
+              <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+              Menyimpan...
+            </>
+          ) : (
+            'Lanjut'
+          )}
         </button>
       </div>
     </div>
   );
 
-  // ── STEP 3: READY ──
-  const renderStep3 = () => (
-    <div className="flex flex-col items-center text-center w-full">
-      {/* Success mascot */}
-      <div className="relative mb-8" style={{ animation: 'cozyFloat 3s ease-in-out infinite' }}>
-        <div className="w-36 h-36 rounded-full flex items-center justify-center text-7xl shadow-2xl"
-          style={{
-            background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)',
-            boxShadow: '0 20px 60px rgba(52,211,153,0.35), 0 0 0 10px rgba(167,243,208,0.2)',
-          }}>
-          🎉
+
+
+  // ─────────────────────────────────────────────
+  // STEP 4: READY
+  // ─────────────────────────────────────────────
+  const renderStep4 = () => (
+    <div className="flex flex-col lg:flex-row items-center flex-1 w-full gap-6 lg:gap-10 my-auto" style={{ width: '100%' }}>
+      {/* Left: Illustration */}
+      <div className="w-full lg:w-1/2 h-56 lg:h-80 bg-orange-50 rounded-3xl relative overflow-hidden flex items-center justify-center border border-orange-100 shrink-0">
+        <span className="material-symbols-outlined text-[100px] lg:text-[130px] text-orange-300 z-10">auto_stories</span>
+        <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-3.5 py-1.5 rounded-xl shadow-md border border-white flex items-center gap-2">
+          <span className="material-symbols-outlined text-[#A04223] text-[18px]">water_drop</span>
+          <span className="text-xs font-bold text-slate-700">Minum Air</span>
         </div>
-        <div className="absolute -top-2 -right-2 text-2xl" style={{ animation: 'cozyFloat 2s ease-in-out 0.2s infinite' }}>🎊</div>
-        <div className="absolute -bottom-2 -left-3 text-xl" style={{ animation: 'cozyFloat 2.5s ease-in-out 0.6s infinite' }}>✨</div>
-        <div className="absolute top-6 -left-6 text-2xl" style={{ animation: 'cozyFloat 3s ease-in-out 0.4s infinite' }}>⭐</div>
-      </div>
-
-      <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-3">
-        Kamu <span style={{ color: '#10B981' }}>Siap!</span> 🌟
-      </h2>
-      <p className="text-slate-500 text-base mb-6 max-w-sm leading-relaxed">
-        Petualangan kebiasaan ajaibmu telah dimulai. Setiap hari adalah kesempatan baru untuk berkembang!
-      </p>
-
-      {/* Summary */}
-      <div className="w-full max-w-xs rounded-3xl p-5 mb-8"
-        style={{ background: 'linear-gradient(135deg, rgba(255,230,250,0.7), rgba(230,245,255,0.7))', border: '1.5px solid rgba(200,180,255,0.3)' }}>
-        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Pilihan Kamu</p>
-        <div className="flex flex-wrap gap-2 justify-center">
-          {selectedCategories.map(id => {
-            const cat = CATEGORIES.find(c => c.id === id);
-            if (!cat) return null;
-            return (
-              <span key={id} className="px-3 py-1.5 rounded-2xl text-xs font-bold text-white"
-                style={{ background: cat.color }}>
-                {cat.emoji} {CATEGORY_MAP[id]}
-              </span>
-            );
-          })}
-          {selectedCategories.length === 0 && (
-            <span className="text-sm text-slate-400">Belum ada pilihan</span>
-          )}
+        <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur px-3.5 py-1.5 rounded-xl shadow-md border border-white flex items-center gap-2">
+          <span className="material-symbols-outlined text-[#A04223] text-[18px]">self_improvement</span>
+          <span className="text-xs font-bold text-slate-700">Meditasi</span>
         </div>
       </div>
 
-      <button
-        onClick={() => router.push('/dashboard')}
-        className="w-full max-w-xs py-4 text-white font-extrabold rounded-3xl shadow-xl hover:scale-105 transition-all"
-        style={{ background: 'linear-gradient(135deg, #10B981, #3B82F6)', boxShadow: '0 10px 40px rgba(59,130,246,0.4)' }}>
-        Mulai Sekarang 🚀
-      </button>
+      {/* Right: Content */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-start text-left" style={{ width: '100%' }}>
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-3" style={{ whiteSpace: 'normal', width: '100%' }}>
+          Kamu siap <span className="text-[#A04223] italic">memulai!</span>
+        </h2>
+        <p className="text-slate-500 text-sm mb-6 leading-relaxed" style={{ whiteSpace: 'normal', width: '100%' }}>
+          Kebiasaan kecil adalah benih untuk hari esok yang lebih baik. Kami telah menyiapkan jurnal pribadimu.
+        </p>
+
+        {/* Summary Box */}
+        <div className="w-full bg-orange-50/40 rounded-2xl p-5 mb-6 border border-orange-100/60" style={{ width: '100%' }}>
+          <h4 className="font-bold text-slate-400 mb-3 text-[10px] tracking-widest uppercase">RANGKUMAN KAMU</h4>
+          <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#A04223]" />
+              <span className="text-xs text-slate-700 font-bold">{selectedCategories.length} Kategori Terpilih</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500" />
+              <span className="text-xs text-slate-700 font-bold">Pengingat Aktif</span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onClick={() => router.push('/dashboard')}
+          className="w-full py-3.5 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_8px_20px_rgba(192,132,252,0.3)] hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(192,132,252,0.4)] cursor-pointer"
+          style={{ width: '100%', display: 'flex', background: 'linear-gradient(135deg, #FF6B9D, #C084FC)' }}
+        >
+          <span>Mulai Sekarang</span>
+          <span className="material-symbols-outlined text-sm">rocket_launch</span>
+        </button>
+      </div>
     </div>
   );
 
+  // ─────────────────────────────────────────────
+  // MAIN RENDER
+  // ─────────────────────────────────────────────
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #FFF0F5 0%, #F5F0FF 50%, #F0F8FF 100%)' }}>
-      <ForceLightMode />
-
-      {/* Background decorations */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-8 left-10 text-3xl" style={{ animation: 'cozyFloat 3s ease-in-out infinite' }}>✨</div>
-        <div className="absolute top-16 right-14 text-2xl" style={{ animation: 'cozyFloat 2.5s ease-in-out 0.5s infinite' }}>⭐</div>
-        <div className="absolute bottom-20 left-16 text-xl" style={{ animation: 'cozyFloat 3.5s ease-in-out 0.8s infinite' }}>💫</div>
-        <div className="absolute bottom-12 right-10 text-2xl" style={{ animation: 'cozyFloat 2.8s ease-in-out 0.3s infinite' }}>🌸</div>
-        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-30"
-          style={{ background: 'radial-gradient(circle, #FFB7D5, transparent 70%)' }} />
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: 'radial-gradient(circle, #C4B5FD, transparent 70%)' }} />
-      </div>
-
-      {/* Main Card */}
-      <div className="relative z-10 w-full rounded-[2.5rem] shadow-2xl"
-        style={{
-          maxWidth: '560px',
-          background: 'rgba(255,255,255,0.88)',
-          backdropFilter: 'blur(20px)',
-          border: '1.5px solid rgba(255,200,230,0.5)',
-          boxShadow: '0 30px 80px rgba(192,132,252,0.2), 0 8px 32px rgba(0,0,0,0.08)',
-        }}>
-
-        {/* Header with Logo & Stepper */}
-        <div className="px-8 pt-7 pb-0 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl shadow-md"
-              style={{ background: 'linear-gradient(135deg, #FFB347, #FF7F7F)' }}>
-              🔥
-            </div>
-            <span className="font-extrabold text-slate-700 text-base">Streak Up</span>
+    <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-6"
+      style={{ background: 'linear-gradient(135deg, #FFE4E1 0%, #E6E6FA 50%, #E0FFFF 100%)' }}>
+      <div
+        className="w-full rounded-3xl shadow-2xl overflow-hidden min-h-[580px] flex flex-col p-6 md:p-10 relative"
+        style={{ 
+          maxWidth: '860px', 
+          width: '100%', 
+          boxSizing: 'border-box',
+          background: 'rgba(255, 255, 255, 0.4)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 255, 255, 0.6)'
+        }}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between w-full mb-6 shrink-0" style={{ width: '100%' }}>
+          <div className="flex items-center gap-2 text-[#A04223]">
+            <span className="material-symbols-outlined text-[24px]">local_fire_department</span>
+            <span className="font-bold text-base tracking-tight text-slate-800">Streak Up</span>
           </div>
 
-          {/* Star Stepper */}
+          {/* Stepper */}
           <div className="flex flex-col items-center gap-1">
-            <div className="flex items-center gap-2">
-              {[1, 2, 3].map(i => (
-                <StarDot key={i} active={step === i} done={step > i} />
+            <div className="flex items-center gap-1.5">
+              {[1, 2, 3].map(idx => (
+                <div
+                  key={idx}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === step ? 'w-6 bg-violet-500' : idx < step ? 'w-1.5 bg-violet-300' : 'w-1.5 bg-white/60'
+                  }`}
+                />
               ))}
             </div>
-            <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: '#C084FC' }}>
+            <span className="text-[9px] font-bold text-slate-400 tracking-widest uppercase hidden sm:block">
               Langkah {step} dari 3
             </span>
           </div>
 
-          {/* Person icon */}
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-            style={{ background: 'rgba(243,232,255,0.5)', border: '1px solid rgba(192,132,252,0.2)' }}>
-            🧙
+          <div className="w-8 h-8 bg-orange-100 text-[#A04223] rounded-full flex items-center justify-center">
+            <span className="material-symbols-outlined text-[18px]">person</span>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="flex flex-col flex-1 w-full items-center justify-center" style={{ width: '100%' }}>
           {step === 1 && renderStep1()}
           {step === 2 && renderStep2()}
-          {step === 3 && renderStep3()}
+          {step === 3 && renderStep4()}
         </div>
       </div>
-
-      <style>{`
-        @keyframes cozyFloat {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(3deg); }
-        }
-      `}</style>
     </div>
   );
 }
