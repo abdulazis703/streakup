@@ -51,7 +51,7 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
       {/* Toggle Button */}
       <button 
         onClick={onToggle}
-        className="absolute -right-3 top-6 w-6 h-6 bg-white dark:bg-slate-800 border border-outline-variant/30 dark:border-slate-600/60 rounded-full flex items-center justify-center shadow-sm z-10 hover:bg-surface-container-low dark:hover:bg-slate-700 transition-colors"
+        className="absolute -right-3 top-6 w-6 h-6 bg-white/30 backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center shadow-sm z-10 hover:bg-white/50 transition-colors"
         aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
       >
         {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
