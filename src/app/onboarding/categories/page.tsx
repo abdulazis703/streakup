@@ -27,7 +27,6 @@ export default function CategoriesPage() {
             <div className="w-3 h-2 rounded-full bg-primary" />
             <div className="w-12 h-2 rounded-full bg-primary" />
             <div className="w-3 h-2 rounded-full bg-surface-container-highest" />
-            <div className="w-3 h-2 rounded-full bg-surface-container-highest" />
           </div>
           <h1 className="font-display text-display text-on-surface" style={{ whiteSpace: 'normal', wordBreak: 'break-word' }}>Area Fokusmu</h1>
           <p className="font-body-lg text-on-surface-variant max-w-lg" style={{ whiteSpace: 'normal', wordBreak: 'break-word' }}>Pilih 1-3 area yang ingin kamu tingkatkan saat ini. Kami akan memberikan rekomendasi habit yang sesuai.</p>
@@ -79,7 +78,7 @@ export default function CategoriesPage() {
         {/* Actions */}
         <div className="flex flex-col items-center gap-md mt-lg w-full" style={{ boxSizing: 'border-box' }}>
           <Link
-            href="/onboarding/habits"
+            href="/onboarding/ready"
             className={`w-full max-w-sm h-16 rounded-2xl font-headline-md flex items-center justify-center gap-sm transition-all ${
               selected.length > 0 
                 ? 'bg-primary text-on-primary shadow-xl shadow-primary/20 hover:scale-105 active:scale-95'
