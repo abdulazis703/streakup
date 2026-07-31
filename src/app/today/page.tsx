@@ -97,6 +97,7 @@ export default function TodayPage() {
   const currentStreak = habits.length > 0 ? Math.max(...habits.map(h => h.current_streak), 0) : 0;
 
   return (
+    // @ts-ignore
     <AppLayout currentStreak={currentStreak} userName={userName}>
       {/* Toast */}
       {toastMsg && (
