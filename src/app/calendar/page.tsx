@@ -75,12 +75,12 @@ export default function CalendarPage() {
 
         {/* Calendar Grid */}
         <div className="glass-card rounded-[2rem] p-xl hover:shadow-md transition-all duration-300 mb-xl">
-          <h2 className="text-headline-md text-slate-900 dark:text-white font-bold mb-lg capitalize">{monthLabel}</h2>
+          <h2 className="text-headline-md text-black font-bold mb-lg capitalize">{monthLabel}</h2>
 
           {/* Day headers */}
           <div className="grid grid-cols-7 mb-sm">
             {['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'].map((d) => (
-              <div key={d} className="text-center text-label-sm text-slate-700 dark:text-slate-300 font-semibold py-sm">{d}</div>
+              <div key={d} className="text-center text-label-sm text-black font-semibold py-sm">{d}</div>
             ))}
           </div>
 
@@ -100,7 +100,7 @@ export default function CalendarPage() {
                   backgroundColor: day.isFuture ? '#e9dfed' : getColorForRate(day.completionRate),
                 }}
               >
-                <span className={`text-[11px] ${day.completionRate > 0 && !day.isFuture ? 'text-white font-bold' : 'text-slate-900 dark:text-slate-100 font-medium'}`}>
+                <span className={`text-[11px] ${day.completionRate > 0 && !day.isFuture ? 'text-white font-bold' : 'text-black font-medium'}`}>
                   {day.day}
                 </span>
               </button>

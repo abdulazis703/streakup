@@ -24,12 +24,12 @@ export default function MiniCalendar() {
   return (
     <div className="glass-card p-lg rounded-[2.5rem] hover:shadow-md transition-all duration-300">
       {/* Header Bulan & Tahun */}
-      <h3 className="font-extrabold text-slate-900 dark:text-white text-base mb-4 capitalize">
+      <h3 className="font-extrabold text-black text-base mb-4 capitalize">
         {monthNames[currentMonth]} {currentYear}
       </h3>
 
       {/* Header Nama Hari */}
-      <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+      <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-black mb-2">
         <span>M</span><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span>
       </div>
 
@@ -46,7 +46,7 @@ export default function MiniCalendar() {
               className={`h-8 w-8 mx-auto flex items-center justify-center rounded-full font-medium transition-all cursor-pointer ${
                 isToday
                   ? 'bg-[#9e4225] text-white font-bold shadow-md scale-105'
-                  : 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700/50'
+                  : 'text-black hover:bg-slate-100'
               }`}
             >
               {day}
