@@ -46,7 +46,7 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   return (
-    <aside className={`fixed left-0 top-0 h-full z-50 flex flex-col transition-all duration-300 ease-in-out shadow-[4px_0_24px_rgba(0,0,0,0.04)] dark:shadow-[4px_0_24px_rgba(0,0,0,0.3)] border-r border-white/30 dark:border-slate-700/50 season-glass-${season} ${isCollapsed ? 'w-20' : 'w-72'}`}>
+    <aside className={`fixed left-0 top-0 h-full z-50 hidden lg:flex flex-col transition-all duration-300 ease-in-out shadow-[4px_0_24px_rgba(0,0,0,0.04)] dark:shadow-[4px_0_24px_rgba(0,0,0,0.3)] border-r border-white/30 dark:border-slate-700/50 season-glass-${season} ${isCollapsed ? 'w-20' : 'w-72'}`}>
       
       {/* Toggle Button */}
       <button 

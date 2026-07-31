@@ -121,8 +121,8 @@ export default function CreateHabitPage() {
             <span className="material-symbols-outlined text-on-surface-variant">arrow_back</span>
           </Link>
           <div>
-            <h1 className="text-headline-lg font-display text-on-surface">Tambah Habit Baru</h1>
-            <p className="text-body-md text-on-surface-variant">Buat kebiasaan baru yang ingin kamu bangun</p>
+            <h1 className="text-2xl sm:text-headline-lg font-display text-on-surface">Tambah Habit Baru</h1>
+            <p className="text-sm sm:text-body-md text-on-surface-variant">Buat kebiasaan baru yang ingin kamu bangun</p>
           </div>
         </div>
 
@@ -132,17 +132,17 @@ export default function CreateHabitPage() {
           style={{ borderColor: color + '50' }}
         >
           <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shrink-0 transition-all duration-500"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center shadow-lg shrink-0 transition-all duration-500"
             style={{ background: `linear-gradient(135deg, ${color}80, ${color}40)` }}
           >
-            <span className="material-symbols-outlined text-[32px]" style={{ color, fontVariationSettings: "'FILL' 1" }}>
+            <span className="material-symbols-outlined text-[28px] sm:text-[32px]" style={{ color, fontVariationSettings: "'FILL' 1" }}>
               {icon}
             </span>
           </div>
           <div>
-            <h3 className="text-body-lg font-bold text-on-surface">{title || 'Nama habitmu...'}</h3>
-            <p className="text-label-sm text-on-surface-variant uppercase tracking-wider">{category}</p>
-            <p className="text-label-sm text-on-surface-variant mt-1">Target: {targetDays} hari</p>
+            <h3 className="text-base sm:text-body-lg font-bold text-on-surface">{title || 'Nama habitmu...'}</h3>
+            <p className="text-[10px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider">{category}</p>
+            <p className="text-[10px] sm:text-label-sm text-on-surface-variant mt-1">Target: {targetDays} hari</p>
           </div>
         </div>
 
@@ -154,7 +154,7 @@ export default function CreateHabitPage() {
 
           {/* Title */}
           <div className="space-y-sm">
-            <label className="text-label-sm font-bold text-on-surface uppercase tracking-widest">
+            <label className="text-xs sm:text-label-sm font-bold text-on-surface uppercase tracking-widest">
               Nama Kebiasaan *
             </label>
             <input
@@ -164,13 +164,13 @@ export default function CreateHabitPage() {
               placeholder="Contoh: Minum air 2L, Olahraga 30 menit..."
               maxLength={80}
               required
-              className="w-full px-lg py-md glass-card rounded-2xl text-on-surface text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+              className="w-full px-4 sm:px-lg py-3 sm:py-md glass-card rounded-2xl text-on-surface text-sm sm:text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
             />
           </div>
 
           {/* ── Kategori Picker ── */}
           <div className="space-y-sm">
-            <label className="text-label-sm font-bold text-on-surface uppercase tracking-widest">Kategori</label>
+            <label className="text-xs sm:text-label-sm font-bold text-on-surface uppercase tracking-widest">Kategori</label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-sm">
               {CATEGORY_OPTIONS.map(cat => {
                 const isActive = category === cat.value;
@@ -198,9 +198,9 @@ export default function CreateHabitPage() {
                       icon={cat.lucide}
                       gradient={cat.gradient as any}
                       size="sm"
-                      className={isActive ? 'shadow-xl scale-110' : ''}
+                      className={`${isActive ? 'shadow-xl scale-110' : ''} sm:w-10 sm:h-10 w-8 h-8`}
                     />
-                    <span className={`text-label-sm font-bold ${isActive ? 'text-[#9e4225]' : 'text-on-surface'}`}>
+                    <span className={`text-[10px] sm:text-label-sm font-bold ${isActive ? 'text-[#9e4225]' : 'text-on-surface'}`}>
                       {cat.label}
                     </span>
                   </button>
@@ -211,8 +211,8 @@ export default function CreateHabitPage() {
 
           {/* ── Icon Picker ── */}
           <div className="space-y-sm">
-            <label className="text-label-sm font-bold text-on-surface uppercase tracking-widest">Ikon</label>
-            <div className="grid grid-cols-8 gap-sm justify-items-center">
+            <label className="text-xs sm:text-label-sm font-bold text-on-surface uppercase tracking-widest">Ikon</label>
+            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-sm justify-items-center">
               {ICON_OPTIONS.map(ic => {
                 const isActive = icon === ic.key;
                 return (
@@ -221,7 +221,7 @@ export default function CreateHabitPage() {
                     type="button"
                     onClick={() => setIcon(ic.key as any)}
                     className={`
-                      w-12 h-12 rounded-full flex items-center justify-center aspect-square transition-all duration-300
+                      w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center aspect-square transition-all duration-300
                       ${isActive
                         ? 'scale-110 ring-2 ring-[#9e4225] ring-offset-2'
                         : 'opacity-70 hover:opacity-100 hover:scale-105'
@@ -241,7 +241,7 @@ export default function CreateHabitPage() {
 
           {/* Color Picker */}
           <div className="space-y-sm">
-            <label className="text-label-sm font-bold text-on-surface uppercase tracking-widest">Warna Aksen</label>
+            <label className="text-xs sm:text-label-sm font-bold text-on-surface uppercase tracking-widest">Warna Aksen</label>
             <div className="flex items-center gap-md flex-wrap">
               <input
                 type="color"
@@ -255,7 +255,7 @@ export default function CreateHabitPage() {
                     key={c}
                     type="button"
                     onClick={() => setColor(c)}
-                    className={`w-8 h-8 rounded-full border-4 transition-all hover:scale-110 shadow-md ${color === c ? 'border-[#9e4225] scale-110' : 'border-transparent'
+                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-4 transition-all hover:scale-110 shadow-md ${color === c ? 'border-[#9e4225] scale-110' : 'border-transparent'
                       }`}
                     style={{ backgroundColor: c }}
                   />
@@ -266,7 +266,7 @@ export default function CreateHabitPage() {
 
           {/* Target Days */}
           <div className="space-y-sm">
-            <label className="text-label-sm font-bold text-on-surface uppercase tracking-widest">
+            <label className="text-xs sm:text-label-sm font-bold text-on-surface uppercase tracking-widest">
               Target Hari: <span className="text-primary">{targetDays} Hari</span>
             </label>
             <input
@@ -274,7 +274,7 @@ export default function CreateHabitPage() {
               onChange={e => setTargetDays(Number(e.target.value))}
               className="w-full accent-primary"
             />
-            <div className="flex justify-between text-label-sm text-on-surface-variant">
+            <div className="flex justify-between text-xs sm:text-label-sm text-on-surface-variant">
               <span>1 hari</span><span>30 hari</span>
             </div>
           </div>
@@ -283,7 +283,7 @@ export default function CreateHabitPage() {
           <button
             type="submit"
             disabled={loading || !title.trim()}
-            className={`w-full py-lg rounded-2xl font-bold text-body-lg flex items-center justify-center gap-sm transition-all shadow-lg ${loading || !title.trim()
+            className={`w-full py-3 sm:py-lg rounded-2xl font-bold text-base sm:text-body-lg flex items-center justify-center gap-sm transition-all shadow-lg ${loading || !title.trim()
               ? 'bg-surface-container-high text-on-surface-variant cursor-not-allowed'
               : 'bg-primary text-on-primary hover:scale-[1.02] hover:shadow-xl shadow-primary/20'
               }`}
