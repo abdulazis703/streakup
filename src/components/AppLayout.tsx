@@ -42,7 +42,7 @@ const CATEGORY_GRADIENT: Record<string, string> = {
   Produktif: 'from-purple-500 to-indigo-600',
 };
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default function AppLayout({ children, currentStreak, userName }: AppLayoutProps) {
   const router = useRouter();
   const { profile, user, signOut, habits, stats } = useAppData();
   const { t } = useSettings();
