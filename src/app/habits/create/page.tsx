@@ -17,72 +17,72 @@ import {
 /* ── Pemetaan Kategori → CartoonIcon ── */
 const CATEGORY_OPTIONS = [
   {
-    value: 'Kesehatan',   label: 'Kesehatan',   gradient: 'rose',    lucide: <Heart size={20} strokeWidth={2.5} />,
-    color: '#ff8c69',    icon: 'favorite',
+    value: 'Kesehatan', label: 'Kesehatan', gradient: 'rose', lucide: <Heart size={20} strokeWidth={2.5} />,
+    color: '#ff8c69', icon: 'favorite',
   },
   {
     value: 'Mindfulness', label: 'Mindfulness', gradient: 'emerald', lucide: <Leaf size={20} strokeWidth={2.5} />,
-    color: '#63bd8b',    icon: 'self_improvement',
+    color: '#63bd8b', icon: 'self_improvement',
   },
   {
-    value: 'Belajar',    label: 'Belajar',     gradient: 'purple',  lucide: <GraduationCap size={20} strokeWidth={2.5} />,
-    color: '#b7a8fe',    icon: 'school',
+    value: 'Belajar', label: 'Belajar', gradient: 'purple', lucide: <GraduationCap size={20} strokeWidth={2.5} />,
+    color: '#b7a8fe', icon: 'school',
   },
   {
-    value: 'Olahraga',   label: 'Olahraga',    gradient: 'fire',    lucide: <Dumbbell size={20} strokeWidth={2.5} />,
-    color: '#ff6b35',    icon: 'fitness_center',
+    value: 'Olahraga', label: 'Olahraga', gradient: 'fire', lucide: <Dumbbell size={20} strokeWidth={2.5} />,
+    color: '#ff6b35', icon: 'fitness_center',
   },
   {
-    value: 'Produktif',  label: 'Produktif',   gradient: 'sky',     lucide: <Briefcase size={20} strokeWidth={2.5} />,
-    color: '#6153a2',    icon: 'work',
+    value: 'Produktif', label: 'Produktif', gradient: 'sky', lucide: <Briefcase size={20} strokeWidth={2.5} />,
+    color: '#6153a2', icon: 'work',
   },
   {
-    value: 'Hobi',       label: 'Hobi',        gradient: 'teal',    lucide: <Palette size={20} strokeWidth={2.5} />,
-    color: '#63bd8b',    icon: 'palette',
+    value: 'Hobi', label: 'Hobi', gradient: 'teal', lucide: <Palette size={20} strokeWidth={2.5} />,
+    color: '#63bd8b', icon: 'palette',
   },
   {
-    value: 'Keuangan',   label: 'Keuangan',    gradient: 'gold',    lucide: <PiggyBank size={20} strokeWidth={2.5} />,
-    color: '#ffd700',    icon: 'savings',
+    value: 'Keuangan', label: 'Keuangan', gradient: 'gold', lucide: <PiggyBank size={20} strokeWidth={2.5} />,
+    color: '#ffd700', icon: 'savings',
   },
   {
-    value: 'Umum',       label: 'Umum',        gradient: 'amber',   lucide: <Star size={20} strokeWidth={2.5} />,
-    color: '#ff8c69',    icon: 'star',
+    value: 'Umum', label: 'Umum', gradient: 'amber', lucide: <Star size={20} strokeWidth={2.5} />,
+    color: '#ff8c69', icon: 'star',
   },
 ] as const;
 
 /* ── Pemetaan Ikon → Lucide + Gradient ── */
 const ICON_OPTIONS = [
-  { key: 'water_drop',           lucide: <Droplets size={16} strokeWidth={2.5} />,          gradient: 'sky'    },
-  { key: 'self_improvement',     lucide: <Leaf size={16} strokeWidth={2.5} />,               gradient: 'emerald'},
-  { key: 'menu_book',            lucide: <BookOpen size={16} strokeWidth={2.5} />,            gradient: 'purple' },
-  { key: 'directions_run',       lucide: <Zap size={16} strokeWidth={2.5} />,                gradient: 'fire'   },
-  { key: 'edit_note',            lucide: <Pencil size={16} strokeWidth={2.5} />,              gradient: 'teal'   },
-  { key: 'fitness_center',       lucide: <Dumbbell size={16} strokeWidth={2.5} />,            gradient: 'fire'   },
-  { key: 'favorite',             lucide: <Heart size={16} strokeWidth={2.5} />,               gradient: 'rose'   },
-  { key: 'school',               lucide: <GraduationCap size={16} strokeWidth={2.5} />,       gradient: 'purple' },
-  { key: 'savings',              lucide: <PiggyBank size={16} strokeWidth={2.5} />,            gradient: 'gold'   },
-  { key: 'work',                 lucide: <Briefcase size={16} strokeWidth={2.5} />,            gradient: 'sky'    },
-  { key: 'palette',              lucide: <Palette size={16} strokeWidth={2.5} />,              gradient: 'teal'   },
-  { key: 'star',                 lucide: <Star size={16} strokeWidth={2.5} />,                 gradient: 'amber'  },
-  { key: 'local_fire_department',lucide: <Flame size={16} strokeWidth={2.5} />,               gradient: 'fire'   },
-  { key: 'bedtime',              lucide: <Moon size={16} strokeWidth={2.5} />,                 gradient: 'purple' },
-  { key: 'restaurant',           lucide: <UtensilsCrossed size={16} strokeWidth={2.5} />,      gradient: 'amber'  },
-  { key: 'music_note',           lucide: <Music size={16} strokeWidth={2.5} />,               gradient: 'rose'   },
+  { key: 'water_drop', lucide: <Droplets size={16} strokeWidth={2.5} />, gradient: 'sky' },
+  { key: 'self_improvement', lucide: <Leaf size={16} strokeWidth={2.5} />, gradient: 'emerald' },
+  { key: 'menu_book', lucide: <BookOpen size={16} strokeWidth={2.5} />, gradient: 'purple' },
+  { key: 'directions_run', lucide: <Zap size={16} strokeWidth={2.5} />, gradient: 'fire' },
+  { key: 'edit_note', lucide: <Pencil size={16} strokeWidth={2.5} />, gradient: 'teal' },
+  { key: 'fitness_center', lucide: <Dumbbell size={16} strokeWidth={2.5} />, gradient: 'fire' },
+  { key: 'favorite', lucide: <Heart size={16} strokeWidth={2.5} />, gradient: 'rose' },
+  { key: 'school', lucide: <GraduationCap size={16} strokeWidth={2.5} />, gradient: 'purple' },
+  { key: 'savings', lucide: <PiggyBank size={16} strokeWidth={2.5} />, gradient: 'gold' },
+  { key: 'work', lucide: <Briefcase size={16} strokeWidth={2.5} />, gradient: 'sky' },
+  { key: 'palette', lucide: <Palette size={16} strokeWidth={2.5} />, gradient: 'teal' },
+  { key: 'star', lucide: <Star size={16} strokeWidth={2.5} />, gradient: 'amber' },
+  { key: 'local_fire_department', lucide: <Flame size={16} strokeWidth={2.5} />, gradient: 'fire' },
+  { key: 'bedtime', lucide: <Moon size={16} strokeWidth={2.5} />, gradient: 'purple' },
+  { key: 'restaurant', lucide: <UtensilsCrossed size={16} strokeWidth={2.5} />, gradient: 'amber' },
+  { key: 'music_note', lucide: <Music size={16} strokeWidth={2.5} />, gradient: 'rose' },
 ] as const;
 
 export default function CreateHabitPage() {
-  const router  = useRouter();
+  const router = useRouter();
   const { addHabit, profile, habits } = useAuth();
 
-  const [title,      setTitle]      = useState('');
-  const [category,   setCategory]   = useState<typeof CATEGORY_OPTIONS[number]['value']>('Kesehatan');
-  const [icon,       setIcon]       = useState<typeof ICON_OPTIONS[number]['key']>('star');
-  const [color,      setColor]      = useState('#ff8c69');
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState<typeof CATEGORY_OPTIONS[number]['value']>('Kesehatan');
+  const [icon, setIcon] = useState<typeof ICON_OPTIONS[number]['key']>('star');
+  const [color, setColor] = useState('#ff8c69');
   const [targetDays, setTargetDays] = useState(7);
-  const [loading,    setLoading]    = useState(false);
-  const [error,      setError]      = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const selectedCategory  = CATEGORY_OPTIONS.find(c => c.value === category)!;
+  const selectedCategory = CATEGORY_OPTIONS.find(c => c.value === category)!;
   const selectedIconEntry = ICON_OPTIONS.find(i => i.key === icon) ?? ICON_OPTIONS[11];
 
   const handleCategoryChange = (val: typeof CATEGORY_OPTIONS[number]['value']) => {
@@ -104,7 +104,7 @@ export default function CreateHabitPage() {
     router.push('/dashboard');
   };
 
-  const userName      = profile?.full_name ?? 'Pengguna';
+  const userName = profile?.full_name ?? 'Pengguna';
   const currentStreak = habits.length > 0 ? Math.max(...habits.map(h => h.current_streak), 0) : 0;
 
   return (
@@ -255,9 +255,8 @@ export default function CreateHabitPage() {
                     key={c}
                     type="button"
                     onClick={() => setColor(c)}
-                    className={`w-8 h-8 rounded-full border-4 transition-all hover:scale-110 shadow-md ${
-                      color === c ? 'border-[#9e4225] scale-110' : 'border-transparent'
-                    }`}
+                    className={`w-8 h-8 rounded-full border-4 transition-all hover:scale-110 shadow-md ${color === c ? 'border-[#9e4225] scale-110' : 'border-transparent'
+                      }`}
                     style={{ backgroundColor: c }}
                   />
                 ))}
@@ -284,11 +283,10 @@ export default function CreateHabitPage() {
           <button
             type="submit"
             disabled={loading || !title.trim()}
-            className={`w-full py-lg rounded-2xl font-bold text-body-lg flex items-center justify-center gap-sm transition-all shadow-lg ${
-              loading || !title.trim()
-                ? 'bg-surface-container-high text-on-surface-variant cursor-not-allowed'
-                : 'bg-primary text-on-primary hover:scale-[1.02] hover:shadow-xl shadow-primary/20'
-            }`}
+            className={`w-full py-lg rounded-2xl font-bold text-body-lg flex items-center justify-center gap-sm transition-all shadow-lg ${loading || !title.trim()
+              ? 'bg-surface-container-high text-on-surface-variant cursor-not-allowed'
+              : 'bg-primary text-on-primary hover:scale-[1.02] hover:shadow-xl shadow-primary/20'
+              }`}
           >
             {loading ? (
               <>
