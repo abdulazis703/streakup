@@ -1,0 +1,898 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand Colors ── */
+  --color-primary: #9e4225;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #ff8c69;
+  --color-on-primary-container: #752409;
+  --color-primary-fixed: #ffdbd1;
+  --color-primary-fixed-dim: #ffb59f;
+  --color-on-primary-fixed: #3a0a00;
+  --color-on-primary-fixed-variant: #7e2b10;
+  --color-inverse-primary: #ffb59f;
+
+  --color-secondary: #6153a2;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #b7a8fe;
+  --color-on-secondary-container: #473986;
+  --color-secondary-fixed: #e6deff;
+  --color-secondary-fixed-dim: #cabeff;
+  --color-on-secondary-fixed: #1c055b;
+  --color-on-secondary-fixed-variant: #493a88;
+
+  --color-tertiary: #006d43;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #63bd8b;
+  --color-on-tertiary-container: #004a2c;
+  --color-tertiary-fixed: #9af6c0;
+  --color-tertiary-fixed-dim: #7ed9a5;
+  --color-on-tertiary-fixed: #002111;
+  --color-on-tertiary-fixed-variant: #005232;
+
+  --color-background: #fff7ff;
+  --color-on-background: #1e1a23;
+  --color-surface: #fff7ff;
+  --color-surface-bright: #fff7ff;
+  --color-surface-dim: #e1d7e5;
+  --color-on-surface: #1e1a23;
+  --color-surface-variant: #e9dfed;
+  --color-on-surface-variant: #56423d;
+  --color-surface-tint: #9e4225;
+  --color-surface-container: #f5eaf9;
+  --color-surface-container-low: #fbf0ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #efe5f3;
+  --color-surface-container-highest: #e9dfed;
+  --color-inverse-surface: #342e39;
+  --color-inverse-on-surface: #f8edfc;
+
+  --color-outline: #89726b;
+  --color-outline-variant: #dcc0b9;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* ── Spacing Tokens (matches Stitch Tailwind config) ── */
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-base: 8px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 64px;
+  --spacing-container-padding: 24px;
+  --spacing-gutter: 16px;
+
+  /* ── Font Families ── */
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  --font-display: var(--font-nunito), system-ui, sans-serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+  --font-headline-md: var(--font-nunito), system-ui, sans-serif;
+  --font-headline-lg: var(--font-nunito), system-ui, sans-serif;
+  --font-headline-lg-mobile: var(--font-nunito), system-ui, sans-serif;
+  --font-body-md: var(--font-nunito), system-ui, sans-serif;
+  --font-body-lg: var(--font-nunito), system-ui, sans-serif;
+  --font-label-sm: var(--font-nunito), system-ui, sans-serif;
+  --font-stat-label: var(--font-space-mono), monospace;
+
+  /* ── Font Size Tokens ── */
+  --text-display: 40px;
+  --text-display--line-height: 48px;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 800;
+
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 600;
+
+  --text-stat-label: 14px;
+  --text-stat-label--line-height: 20px;
+  --text-stat-label--letter-spacing: 0.05em;
+  --text-stat-label--font-weight: 400;
+}
+
+/* Dark mode overrides — disabled, app is light-mode only */
+/* .dark { ... } */
+
+@layer utilities {
+  .text-main {
+    @apply text-slate-800 dark:text-white;
+  }
+  .text-muted-custom {
+    @apply text-slate-600 dark:text-slate-300;
+  }
+  .card-custom {
+    @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-700/50 shadow-sm;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: #0f172a !important;
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── Glassmorphism Card Utility ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.60);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.60);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.30);
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dcc0b9;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #89726b;
+}
+
+/* Custom Animation Utilities */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* ── Ambient Background Animations ── */
+@keyframes blobDrift1 {
+
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.97);
+  }
+}
+
+@keyframes blobDrift2 {
+
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  40% {
+    transform: translate(-35px, 30px) scale(1.08);
+  }
+
+  70% {
+    transform: translate(20px, -20px) scale(0.95);
+  }
+}
+
+@keyframes blobDrift3 {
+
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  30% {
+    transform: translate(20px, 35px) scale(1.04);
+  }
+
+  65% {
+    transform: translate(-30px, -15px) scale(0.98);
+  }
+}
+
+.animate-blob-1 {
+  animation: blobDrift1 18s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: blobDrift2 22s ease-in-out infinite;
+  animation-delay: -7s;
+}
+
+.animate-blob-3 {
+  animation: blobDrift3 26s ease-in-out infinite;
+  animation-delay: -14s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   🎨 DISNEY CARTOON SEASONAL THEME — Particle Animations
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── ❄️  WINTER TIER 1 — Fast Small Snow (front layer) ── */
+@keyframes snowFallFast {
+  0% {
+    transform: translateY(-40px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  20% {
+    transform: translateY(20vh) translateX(22px) rotate(80deg);
+  }
+
+  45% {
+    transform: translateY(48vh) translateX(-18px) rotate(190deg);
+  }
+
+  70% {
+    transform: translateY(72vh) translateX(28px) rotate(290deg);
+    opacity: 0.75;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(108vh) translateX(-10px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ── ❄️  WINTER TIER 2 — Wobbly Medium Snow (mid layer) ── */
+@keyframes snowFallWobbly {
+  0% {
+    transform: translateY(-60px) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.80;
+  }
+
+  15% {
+    transform: translateY(15vh) translateX(-30px) rotate(45deg) scale(1.1);
+  }
+
+  30% {
+    transform: translateY(30vh) translateX(35px) rotate(110deg) scale(0.9);
+  }
+
+  48% {
+    transform: translateY(48vh) translateX(-28px) rotate(190deg) scale(1.05);
+  }
+
+  65% {
+    transform: translateY(65vh) translateX(32px) rotate(270deg) scale(0.95);
+    opacity: 0.70;
+  }
+
+  82% {
+    transform: translateY(82vh) translateX(-22px) rotate(330deg) scale(1);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translateY(112vh) translateX(12px) rotate(400deg) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* ── ❄️  WINTER TIER 3 — Slow Fluffy Big Snow (back layer) ── */
+@keyframes snowFallSlow {
+  0% {
+    transform: translateY(-80px) translateX(0px) rotate(0deg) scale(1.2);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.70;
+  }
+
+  25% {
+    transform: translateY(22vh) translateX(14px) rotate(60deg) scale(1.3);
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(-20px) rotate(150deg) scale(1.1);
+  }
+
+  75% {
+    transform: translateY(75vh) translateX(18px) rotate(240deg) scale(1.2);
+    opacity: 0.55;
+  }
+
+  92% {
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translateY(115vh) translateX(-8px) rotate(310deg) scale(1.0);
+    opacity: 0;
+  }
+}
+
+.season-particle-snow-fast {
+  animation-name: snowFallFast;
+  position: fixed;
+  top: -40px;
+  z-index: 20;
+  /* front: above cards */
+}
+
+.season-particle-snow-wobbly {
+  animation-name: snowFallWobbly;
+  position: fixed;
+  top: -60px;
+  z-index: 5;
+  /* mid: between bg and cards */
+}
+
+.season-particle-snow-slow {
+  animation-name: snowFallSlow;
+  position: fixed;
+  top: -80px;
+  z-index: 2;
+  /* back: behind cards, near bg */
+}
+
+/* Legacy alias (keeps any existing refs working) */
+.season-particle-snow {
+  animation-name: snowFallWobbly;
+  position: fixed;
+  top: -60px;
+  z-index: 5;
+}
+
+/* ── 🍂  AUTUMN — Playful Spinning Leaf Fall ── */
+@keyframes leafFall {
+  0% {
+    transform: translateY(-60px) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.80;
+  }
+
+  20% {
+    transform: translateY(20vh) translateX(30px) rotate(75deg) scale(1.05);
+  }
+
+  40% {
+    transform: translateY(40vh) translateX(-25px) rotate(160deg) scale(0.95);
+  }
+
+  60% {
+    transform: translateY(60vh) translateX(35px) rotate(260deg) scale(1.05);
+  }
+
+  80% {
+    transform: translateY(80vh) translateX(-20px) rotate(340deg) scale(0.95);
+    opacity: 0.60;
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(15px) rotate(420deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.season-particle-leaf {
+  animation-name: leafFall;
+  position: fixed;
+  top: -60px;
+}
+
+/* ── 🌸  SPRING TIER 1 — Fast Light Petal Fall ── */
+@keyframes petalFallFast {
+  0% {
+    transform: translateY(-40px) translateX(0px) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.85;
+  }
+
+  22% {
+    transform: translateY(22vh) translateX(-28px) rotate(40deg) scale(1);
+  }
+
+  45% {
+    transform: translateY(45vh) translateX(30px) rotate(100deg) scale(1.05);
+  }
+
+  68% {
+    transform: translateY(68vh) translateX(-22px) rotate(170deg) scale(0.95);
+    opacity: 0.72;
+  }
+
+  90% {
+    opacity: 0.40;
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(14px) rotate(240deg) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* ── 🌸  SPRING TIER 2 — Gentle Swaying Petal ── */
+@keyframes petalFallWobbly {
+  0% {
+    transform: translateY(-55px) translateX(0px) rotate(-15deg) scale(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.80;
+  }
+
+  18% {
+    transform: translateY(18vh) translateX(35px) rotate(20deg) scale(1.1);
+  }
+
+  36% {
+    transform: translateY(36vh) translateX(-30px) rotate(80deg) scale(0.92);
+  }
+
+  54% {
+    transform: translateY(54vh) translateX(38px) rotate(145deg) scale(1.08);
+  }
+
+  72% {
+    transform: translateY(72vh) translateX(-25px) rotate(210deg) scale(0.95);
+    opacity: 0.60;
+  }
+
+  100% {
+    transform: translateY(114vh) translateX(16px) rotate(290deg) scale(0.88);
+    opacity: 0;
+  }
+}
+
+/* ── 🌸  SPRING TIER 3 — Slow Dreamy Large Petal ── */
+@keyframes petalFallSlow {
+  0% {
+    transform: translateY(-70px) translateX(0px) rotate(0deg) scale(1.2);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.65;
+  }
+
+  28% {
+    transform: translateY(28vh) translateX(-18px) rotate(55deg) scale(1.3);
+  }
+
+  55% {
+    transform: translateY(55vh) translateX(22px) rotate(130deg) scale(1.1);
+  }
+
+  80% {
+    transform: translateY(80vh) translateX(-15px) rotate(210deg) scale(1.15);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translateY(115vh) translateX(10px) rotate(270deg) scale(1.0);
+    opacity: 0;
+  }
+}
+
+.season-particle-petal-fast {
+  animation-name: petalFallFast;
+  position: fixed;
+  top: -40px;
+  z-index: 20;
+}
+
+.season-particle-petal-wobbly {
+  animation-name: petalFallWobbly;
+  position: fixed;
+  top: -55px;
+  z-index: 5;
+}
+
+.season-particle-petal-slow {
+  animation-name: petalFallSlow;
+  position: fixed;
+  top: -70px;
+  z-index: 2;
+}
+
+/* Legacy alias */
+.season-particle-petal {
+  animation-name: petalFallWobbly;
+  position: fixed;
+  top: -55px;
+  z-index: 5;
+}
+
+/* ── ☀️  SUMMER TIER 1 — Fast Sparkle Twinkle (floats UP from bottom) ── */
+@keyframes sparkleTwinkle {
+  0% {
+    transform: translateY(112vh) translateX(0px) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 0.90;
+  }
+
+  20% {
+    transform: translateY(88vh) translateX(-22px) scale(1.4) rotate(72deg);
+  }
+
+  42% {
+    transform: translateY(62vh) translateX(20px) scale(0.7) rotate(155deg);
+  }
+
+  65% {
+    transform: translateY(36vh) translateX(-18px) scale(1.5) rotate(240deg);
+    opacity: 0.75;
+  }
+
+  88% {
+    transform: translateY(14vh) translateX(12px) scale(0.6) rotate(320deg);
+    opacity: 0.30;
+  }
+
+  100% {
+    transform: translateY(-30px) translateX(-6px) scale(0.4) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ── ☀️  SUMMER TIER 2 — Leaf Float Gentle ── */
+@keyframes leafFloat {
+  0% {
+    transform: translateY(-50px) translateX(0px) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.82;
+  }
+
+  25% {
+    transform: translateY(25vh) translateX(20px) rotate(30deg) scale(1.0);
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(-16px) rotate(75deg) scale(1.05);
+  }
+
+  75% {
+    transform: translateY(75vh) translateX(18px) rotate(120deg) scale(0.95);
+    opacity: 0.62;
+  }
+
+  100% {
+    transform: translateY(112vh) translateX(-10px) rotate(180deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* ── ☀️  SUMMER TIER 3 — Big Slow Sparkle Drift ── */
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(114vh) translateX(0px) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.55;
+  }
+
+  30% {
+    transform: translateY(82vh) translateX(-25px) scale(1.6) rotate(120deg);
+  }
+
+  60% {
+    transform: translateY(50vh) translateX(20px) scale(1.0) rotate(240deg);
+    opacity: 0.45;
+  }
+
+  90% {
+    transform: translateY(18vh) translateX(-12px) scale(1.4) rotate(330deg);
+    opacity: 0.22;
+  }
+
+  100% {
+    transform: translateY(-50px) translateX(8px) scale(0.7) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.season-particle-sparkle-fast {
+  animation-name: sparkleTwinkle;
+  position: fixed;
+  bottom: -30px;
+  top: auto !important;
+  z-index: 20;
+}
+
+.season-particle-leaf-float {
+  animation-name: leafFloat;
+  position: fixed;
+  top: -50px;
+  z-index: 5;
+}
+
+.season-particle-sparkle-slow {
+  animation-name: sparkleFloat;
+  position: fixed;
+  bottom: -50px;
+  top: auto !important;
+  z-index: 2;
+}
+
+/* Legacy alias */
+.season-particle-sparkle {
+  animation-name: sparkleTwinkle;
+  position: fixed;
+  bottom: -40px;
+  top: auto !important;
+  z-index: 10;
+}
+
+/* ── 🍂  AUTUMN TIER 1 — Fast Tumbling Leaf ── */
+@keyframes leafTumbleFast {
+  0% {
+    transform: translateY(-50px) translateX(0px) rotate(0deg) scale(1.0);
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 0.90;
+  }
+
+  18% {
+    transform: translateY(18vh) translateX(40px) rotate(95deg) scale(1.1);
+  }
+
+  36% {
+    transform: translateY(36vh) translateX(-35px) rotate(200deg) scale(0.9);
+  }
+
+  55% {
+    transform: translateY(55vh) translateX(42px) rotate(305deg) scale(1.05);
+    opacity: 0.78;
+  }
+
+  78% {
+    transform: translateY(78vh) translateX(-28px) rotate(400deg) scale(0.95);
+    opacity: 0.50;
+  }
+
+  100% {
+    transform: translateY(112vh) translateX(20px) rotate(490deg) scale(1.0);
+    opacity: 0;
+  }
+}
+
+/* ── 🍂  AUTUMN TIER 2 — Wobbly Spiral Leaf ── */
+@keyframes leafSpiralWobbly {
+  0% {
+    transform: translateY(-60px) translateX(0px) rotate(-20deg) scale(1);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.85;
+  }
+
+  15% {
+    transform: translateY(15vh) translateX(-45px) rotate(50deg) scale(1.12);
+  }
+
+  32% {
+    transform: translateY(32vh) translateX(48px) rotate(155deg) scale(0.88);
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(-40px) rotate(250deg) scale(1.08);
+  }
+
+  68% {
+    transform: translateY(68vh) translateX(44px) rotate(345deg) scale(0.92);
+    opacity: 0.65;
+  }
+
+  85% {
+    transform: translateY(85vh) translateX(-32px) rotate(430deg) scale(1.0);
+    opacity: 0.38;
+  }
+
+  100% {
+    transform: translateY(115vh) translateX(18px) rotate(510deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* ── 🍂  AUTUMN TIER 3 — Slow Drifting Big Leaf ── */
+@keyframes leafDriftSlow {
+  0% {
+    transform: translateY(-80px) translateX(0px) rotate(10deg) scale(1.3);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.70;
+  }
+
+  28% {
+    transform: translateY(28vh) translateX(25px) rotate(80deg) scale(1.4);
+  }
+
+  55% {
+    transform: translateY(55vh) translateX(-22px) rotate(175deg) scale(1.2);
+  }
+
+  80% {
+    transform: translateY(80vh) translateX(20px) rotate(260deg) scale(1.3);
+    opacity: 0.48;
+  }
+
+  100% {
+    transform: translateY(118vh) translateX(-12px) rotate(330deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.season-particle-leaf-fast {
+  animation-name: leafTumbleFast;
+  position: fixed;
+  top: -50px;
+  z-index: 20;
+}
+
+.season-particle-leaf-wobbly {
+  animation-name: leafSpiralWobbly;
+  position: fixed;
+  top: -60px;
+  z-index: 5;
+}
+
+.season-particle-leaf-slow {
+  animation-name: leafDriftSlow;
+  position: fixed;
+  top: -80px;
+  z-index: 2;
+}
+
+/* Legacy alias */
+.season-particle-leaf {
+  animation-name: leafSpiralWobbly;
+  position: fixed;
+  top: -60px;
+  z-index: 5;
+}
+
+/* ── Season Selector Widget ── */
+@keyframes selectorPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.14), 0 0 0 6px rgba(255, 255, 255, 0.0);
+  }
+}
+
+.season-selector-float {
+  animation: selectorPulse 4s ease-in-out infinite;
+}
+
+/* ── Seasonal Glass Card Tint Transitions ── */
+.season-glass-winter {
+  background: rgba(219, 234, 254, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.season-glass-spring {
+  background: rgba(252, 231, 243, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.season-glass-summer {
+  background: rgba(254, 240, 138, 0.40) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.season-glass-autumn {
+  background: rgba(255, 237, 213, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+}

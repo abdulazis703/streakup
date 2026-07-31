@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-fixed-variant":"#005232","primary":"#9e4225","inverse-on-surface":"#f8edfc","on-tertiary-fixed":"#002111","inverse-primary":"#ffb59f","on-primary-container":"#752409","on-primary-fixed":"#3a0a00","primary-fixed-dim":"#ffb59f","surface-container-highest":"#e9dfed","surface-container-high":"#efe5f3","on-tertiary-container":"#004a2c","surface-container":"#f5eaf9","surface":"#fff7ff","secondary-fixed-dim":"#cabeff","error":"#ba1a1a","outline-variant":"#dcc0b9","tertiary-fixed":"#9af6c0","on-surface-variant":"#56423d","on-surface":"#1e1a23","secondary-fixed":"#e6deff","on-error-container":"#93000a","surface-bright":"#fff7ff","surface-container-low":"#fbf0ff","secondary":"#6153a2","on-secondary-fixed":"#1c055b","tertiary":"#006d43","surface-dim":"#e1d7e5","on-error":"#ffffff","tertiary-fixed-dim":"#7ed9a5","on-secondary":"#ffffff","on-secondary-fixed-variant":"#493a88","primary-fixed":"#ffdbd1","on-tertiary":"#ffffff","on-background":"#1e1a23","surface-tint":"#9e4225","surface-container-lowest":"#ffffff","primary-container":"#ff8c69","tertiary-container":"#63bd8b","on-secondary-container":"#473986","on-primary":"#ffffff","inverse-surface":"#342e39","secondary-container":"#b7a8fe","error-container":"#ffdad6","on-primary-fixed-variant":"#7e2b10","surface-variant":"#e9dfed","outline":"#89726b","background":"#fff7ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"sm":"12px","xl":"64px","xs":"4px","container-padding":"24px","md":"24px","gutter":"16px","base":"8px","lg":"40px"},"fontFamily":{"headline-md":["Nunito Sans"],"stat-label":["Space Mono"],"body-md":["Nunito Sans"],"body-lg":["Nunito Sans"],"display":["Nunito Sans"],"label-sm":["Nunito Sans"],"headline-lg":["Nunito Sans"],"headline-lg-mobile":["Nunito Sans"]},"fontSize":{"headline-md":["24px",{"lineHeight":"32px","fontWeight":"700"}],"stat-label":["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"800"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"700"}]}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100..900&amp;display=swap" rel="stylesheet"></head><body class="bg-surface font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-transparent"><div class="h-20 w-full px-container-padding flex items-center justify-between"><div class="flex items-center gap-base"><img alt="Streak Up habit tracker logo, minimalist soft cartoon style, peach and mint colors, friendly and calming." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLviZrqu9Ub52-ES37sFTFuSWIAVCaoIcOdlZtyRAmSc9QwRX9BQvm2jIIk-UaG7AWOJoxU57A_-4Nllw4kPgWOeoX8kNwfEHz_0n8FYxhVHWvsrUZ-6uI-dUvH1cn3XrxC3Gn232Jz9ikGDdyX6pLve6cNw0CHkCQ4BmRAxBW4in5OF-BsPxN1TQrtABFY9LC3e83zxiDz1b9qoq6q4vuwpVnSeHWIRR53Xqe-ib1fT34b2ZzPT7q6RTL4"><span class="font-headline-md text-headline-md text-primary tracking-tight">Streak Up</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-xl bg-surface px-container-padding"><div class="flex flex-col w-full max-w-4xl mx-auto">
+<!-- Progress Indicator -->
+<div class="flex justify-center items-center gap-2 mb-lg">
+<div class="h-1.5 w-8 rounded-full bg-surface-container-highest transition-colors duration-500"></div>
+<div class="h-1.5 w-12 rounded-full bg-primary shadow-[0_0_12px_rgba(158,66,37,0.3)] transition-all duration-500"></div>
+<div class="h-1.5 w-8 rounded-full bg-surface-container-highest transition-colors duration-500"></div>
+</div>
+<!-- Header Section -->
+<div class="text-center space-y-sm mb-xl">
+<h1 class="font-display text-display text-on-surface tracking-tight">
+      Pilih kategori yang kamu minati
+    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+      Kami akan menyesuaikan rekomendasi berdasarkan pilihanmu.
+    </p>
+</div>
+<!-- Category Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-xl">
+<!-- Card: Study -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-surface-container-low transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm hover:shadow-md cursor-pointer border-4 border-transparent category-card" data-category="study" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-tertiary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Belajar</span>
+<div class="absolute top-4 right-4 opacity-0 transition-opacity check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+<!-- Card: Health (Selected) -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-primary-fixed/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md cursor-pointer border-4 border-primary category-card selected" data-category="health" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-primary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-primary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Kesehatan</span>
+<div class="absolute top-4 right-4 opacity-100 check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+<!-- Card: Exercise -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-surface-container-low transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm hover:shadow-md cursor-pointer border-4 border-transparent category-card" data-category="exercise" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-secondary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Olahraga</span>
+<div class="absolute top-4 right-4 opacity-0 transition-opacity check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+<!-- Card: Productivity (Selected) -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-primary-fixed/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md cursor-pointer border-4 border-primary category-card selected" data-category="productivity" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-primary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-primary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Produktif</span>
+<div class="absolute top-4 right-4 opacity-100 check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+<!-- Card: Hobby -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-surface-container-low transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm hover:shadow-md cursor-pointer border-4 border-transparent category-card" data-category="hobby" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-tertiary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">palette</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Hobi</span>
+<div class="absolute top-4 right-4 opacity-0 transition-opacity check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+<!-- Card: Mindfulness -->
+<button class="group relative flex flex-col items-center p-lg rounded-[2rem] bg-surface-container-low transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm hover:shadow-md cursor-pointer border-4 border-transparent category-card" data-category="mindfulness" onclick="toggleSelection(this)">
+<div class="w-20 h-20 rounded-3xl bg-secondary-container flex items-center justify-center mb-md group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Mindful</span>
+<div class="absolute top-4 right-4 opacity-0 transition-opacity check-mark">
+<span class="material-symbols-outlined text-primary text-[24px]">check_circle</span>
+</div>
+</button>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-between gap-md w-full pt-md border-t border-surface-container-highest">
+<button class="h-14 px-xl rounded-xl font-headline-md text-headline-md text-on-surface-variant hover:bg-surface-container-high transition-colors">
+      Kembali
+    </button>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest" id="counter-text">2 Kategori Terpilih</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Min. 1</span>
+</div>
+<button class="h-14 px-xl rounded-xl bg-primary text-on-primary font-headline-md text-headline-md shadow-lg shadow-primary/20 hover:scale-[1.05] active:scale-[0.98] transition-all" id="next-button">
+        Lanjut
+      </button>
+</div>
+</div>
+<script>
+    function toggleSelection(el) {
+      const isSelected = el.classList.contains('selected');
+      const checkMark = el.querySelector('.check-mark');
+      
+      if (isSelected) {
+        el.classList.remove('selected', 'bg-primary-fixed/30', 'border-primary', 'shadow-md');
+        el.classList.add('bg-surface-container-low', 'border-transparent', 'shadow-sm');
+        checkMark.classList.remove('opacity-100');
+        checkMark.classList.add('opacity-0');
+      } else {
+        el.classList.add('selected', 'bg-primary-fixed/30', 'border-primary', 'shadow-md');
+        el.classList.remove('bg-surface-container-low', 'border-transparent', 'shadow-sm');
+        checkMark.classList.remove('opacity-0');
+        checkMark.classList.add('opacity-100');
+        
+        // Brief pop animation
+        el.style.transform = 'scale(1.08)';
+        setTimeout(() => {
+          el.style.transform = '';
+        }, 150);
+      }
+      
+      updateCounter();
+    }
+
+    function updateCounter() {
+      const selectedCount = document.querySelectorAll('.category-card.selected').length;
+      const counterText = document.getElementById('counter-text');
+      const nextBtn = document.getElementById('next-button');
+      
+      counterText.innerText = `${selectedCount} Kategori Terpilih`;
+      
+      if (selectedCount === 0) {
+        nextBtn.classList.add('opacity-50', 'pointer-events-none');
+        counterText.classList.replace('text-primary', 'text-on-surface-variant');
+      } else {
+        nextBtn.classList.remove('opacity-50', 'pointer-events-none');
+        counterText.classList.replace('text-on-surface-variant', 'text-primary');
+      }
+    }
+  </script>
+<!-- Decorative Background Blurs -->
+<div class="fixed top-1/4 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+<div class="fixed bottom-1/4 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+</div></main></body></html>

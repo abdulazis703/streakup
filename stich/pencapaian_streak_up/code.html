@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={theme:{extend:{"colors":{"tertiary-container":"#63bd8b","on-error":"#ffffff","primary-fixed-dim":"#ffb59f","on-surface-variant":"#56423d","primary":"#9e4225","surface-tint":"#9e4225","surface-dim":"#e1d7e5","surface-container-highest":"#e9dfed","background":"#fff7ff","on-tertiary":"#ffffff","on-secondary-fixed":"#1c055b","on-secondary":"#ffffff","on-primary":"#ffffff","surface-container-high":"#efe5f3","on-primary-fixed":"#3a0a00","primary-container":"#ff8c69","tertiary-fixed-dim":"#7ed9a5","tertiary":"#006d43","surface-container-low":"#fbf0ff","outline-variant":"#dcc0b9","secondary-fixed-dim":"#cabeff","on-primary-fixed-variant":"#7e2b10","outline":"#89726b","inverse-on-surface":"#f8edfc","error-container":"#ffdad6","on-tertiary-fixed-variant":"#005232","secondary-fixed":"#e6deff","on-tertiary-container":"#004a2c","primary-fixed":"#ffdbd1","on-primary-container":"#752409","on-secondary-container":"#473986","error":"#ba1a1a","inverse-surface":"#342e39","on-surface":"#1e1a23","secondary":"#6153a2","surface-bright":"#fff7ff","on-tertiary-fixed":"#002111","on-error-container":"#93000a","surface-container":"#f5eaf9","surface-variant":"#e9dfed","on-secondary-fixed-variant":"#493a88","on-background":"#1e1a23","inverse-primary":"#ffb59f","surface":"#fff7ff","secondary-container":"#b7a8fe","tertiary-fixed":"#9af6c0","surface-container-lowest":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"base":"8px","container-padding":"24px","gutter":"16px","xl":"64px","xs":"4px","lg":"40px","sm":"12px","md":"24px"},"fontFamily":{"display":["Nunito Sans"],"body-lg":["Nunito Sans"],"label-sm":["Nunito Sans"],"headline-md":["Nunito Sans"],"stat-label":["Space Mono"],"body-md":["Nunito Sans"],"headline-lg-mobile":["Nunito Sans"],"headline-lg":["Nunito Sans"]},"fontSize":{"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"700"}],"stat-label":["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}]}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100..900&amp;display=swap" rel="stylesheet"></head><body class="bg-background font-body-md text-on-background"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[4px_0_20px_rgba(158,66,37,0.05)]"><div class="p-md flex items-center gap-sm mb-lg"><img alt="Streak Up Logo" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLviZrqu9Ub52-ES37sFTFuSWIAVCaoIcOdlZtyRAmSc9QwRX9BQvm2jIIk-UaG7AWOJoxU57A_-4Nllw4kPgWOeoX8kNwfEHz_0n8FYxhVHWvsrUZ-6uI-dUvH1cn3XrxC3Gn232Jz9ikGDdyX6pLve6cNw0CHkCQ4BmRAxBW4in5OF-BsPxN1TQrtABFY9LC3e83zxiDz1b9qoq6q4vuwpVnSeHWIRR53Xqe-ib1fT34b2ZzPT7q6RTL4"><span class="font-headline-lg text-headline-lg text-primary tracking-tight">Streak Up</span></div><nav class="flex-1 px-sm space-y-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-[0_4px_12px_rgba(158,66,37,0.15)]"><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="habits" href="#"><span class="material-symbols-outlined text-[24px]">check_circle</span><span class="font-body-md text-body-md">Habits</span></a><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="calendar" href="#"><span class="material-symbols-outlined text-[24px]">calendar_month</span><span class="font-body-md text-body-md">Calendar</span></a><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="statistics" href="#"><span class="material-symbols-outlined text-[24px]">query_stats</span><span class="font-body-md text-body-md">Statistics</span></a><a aria-current="page" class="flex items-center gap-sm px-md py-sm rounded-xl transition-all duration-300 group bg-primary-container text-on-primary-container font-bold shadow-[0_4px_12px_rgba(158,66,37,0.15)]" data-path="achievements" href="#"><span class="material-symbols-outlined text-[24px]">emoji_events</span><span class="font-body-md text-body-md">Achievements</span></a><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="reflection" href="#"><span class="material-symbols-outlined text-[24px]">self_improvement</span><span class="font-body-md text-body-md">Reflection</span></a><div class="my-lg px-md border-t border-surface-variant/30"></div><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="profile" href="#"><span class="material-symbols-outlined text-[24px]">person_outline</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all duration-300 group" data-path="settings" href="#"><span class="material-symbols-outlined text-[24px]">settings</span><span class="font-body-md text-body-md">Settings</span></a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-background/80 backdrop-blur-md z-40 flex items-center justify-between px-container-padding transition-all duration-300"><div class="flex-1 max-w-xl"><div class="relative flex items-center group"><span class="material-symbols-outlined absolute left-4 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span><input class="w-full bg-surface-container-low border-none rounded-full py-3 pl-12 pr-4 text-body-md focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface" placeholder="Search habits or logs..." type="text"></div></div><div class="flex items-center gap-md"><button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span><span class="absolute top-3 right-3 w-2 h-2 bg-primary rounded-full"></span></button><div class="flex items-center gap-sm bg-surface-container-low px-sm py-xs rounded-full cursor-pointer hover:bg-surface-container transition-all"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-body-md text-on-surface-variant hidden lg:block">Alex Green</span></div></div></header><main class="pt-20 px-container-padding pb-xl min-h-screen"><div class="flex flex-col w-full gap-xl">
+<!-- Header & Progress Section -->
+<section class="flex flex-col md:flex-row items-end justify-between gap-lg mb-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-sm mb-base">
+<span class="px-sm py-1 bg-tertiary-container/20 text-tertiary rounded-full font-label-sm text-label-sm uppercase tracking-wider">Milestones</span>
+<span class="font-stat-label text-stat-label text-on-surface-variant">4 / 12 Unlocked</span>
+</div>
+<h2 class="font-display text-display text-on-surface mb-md">Your Hall of Growth</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+        Every small action is a seed planted for your future self. Celebrate these milestones as markers of your evolving journey toward gentle productivity.
+      </p>
+</div>
+<!-- Overall Progress Ring -->
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="174" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display text-headline-md text-primary">33%</span>
+</div>
+</div>
+</section>
+<!-- Achievement Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-lg">
+<!-- Unlocked: First Habit -->
+<div class="group relative bg-surface-container-lowest p-md rounded-[32px] shadow-[0_12px_40px_rgba(255,140,105,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(255,140,105,0.15)] overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-primary-container/20 rounded-full blur-2xl group-hover:bg-primary-container/40 transition-colors"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-gradient-to-br from-primary-container to-primary-fixed-dim flex items-center justify-center shadow-[0_8px_20px_rgba(158,66,37,0.2)] animate-pulse-slow">
+<span class="material-symbols-outlined text-[48px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">First Habit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">The journey of a thousand miles begins with one step.</p>
+</div>
+</div>
+<!-- Unlocked: 7 Day Streak -->
+<div class="group relative bg-surface-container-lowest p-md rounded-[32px] shadow-[0_12px_40px_rgba(97,83,162,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(97,83,162,0.15)] overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-secondary-container/20 rounded-full blur-2xl group-hover:bg-secondary-container/40 transition-colors"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-gradient-to-br from-secondary-container to-secondary-fixed-dim flex items-center justify-center shadow-[0_8px_20px_rgba(97,83,162,0.2)]">
+<span class="material-symbols-outlined text-[48px] text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">filter_7</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">7 Day Streak</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Seven days of consistent care and attention.</p>
+</div>
+</div>
+<!-- Unlocked: Perfect Week -->
+<div class="group relative bg-surface-container-lowest p-md rounded-[32px] shadow-[0_12px_40px_rgba(0,109,67,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,109,67,0.15)] overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-tertiary-container/20 rounded-full blur-2xl group-hover:bg-tertiary-container/40 transition-colors"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-gradient-to-br from-tertiary-container to-tertiary-fixed-dim flex items-center justify-center shadow-[0_8px_20px_rgba(0,109,67,0.2)]">
+<span class="material-symbols-outlined text-[48px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">grade</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Perfect Week</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Every single habit completed for an entire week.</p>
+</div>
+</div>
+<!-- Unlocked: Early Bird -->
+<div class="group relative bg-surface-container-lowest p-md rounded-[32px] shadow-[0_12px_40px_rgba(255,219,209,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(255,140,105,0.15)] overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-primary-fixed/20 rounded-full blur-2xl group-hover:bg-primary-fixed/40 transition-colors"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center shadow-[0_8px_20px_rgba(255,165,0,0.25)]">
+<span class="material-symbols-outlined text-[48px] text-white" style="font-variation-settings: 'FILL' 1;">flutter_dash</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Early Bird</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Completed all morning habits before 8:00 AM.</p>
+</div>
+</div>
+<!-- Locked: Monthly Master -->
+<div class="group relative bg-surface-container/30 p-md rounded-[32px] transition-all duration-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-surface-container-highest flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-outline">emoji_events</span>
+<div class="absolute bottom-0 right-0 w-8 h-8 bg-surface-container-lowest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">lock</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Monthly Master</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Maintain a 30-day streak on any core habit.</p>
+</div>
+</div>
+<!-- Locked: Consistency King -->
+<div class="group relative bg-surface-container/30 p-md rounded-[32px] transition-all duration-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-surface-container-highest flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-outline">rewarded_ads</span>
+<div class="absolute bottom-0 right-0 w-8 h-8 bg-surface-container-lowest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">lock</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Consistency King</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">100 total habit completions across all goals.</p>
+</div>
+</div>
+<!-- Locked: Night Owl -->
+<div class="group relative bg-surface-container/30 p-md rounded-[32px] transition-all duration-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-md rounded-full bg-surface-container-highest flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-outline">dark_mode</span>
+<div class="absolute bottom-0 right-0 w-8 h-8 bg-surface-container-lowest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">lock</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Night Owl</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Complete your evening reflection 5 days in a row.</p>
+</div>
+</div>
+<!-- Empty/Coming Soon State -->
+<div class="flex flex-col items-center justify-center p-md rounded-[32px] border-2 border-dashed border-outline-variant/30 text-outline-variant">
+<span class="material-symbols-outlined text-[32px] mb-sm">more_horiz</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-center">More to Discover</span>
+</div>
+</div>
+<!-- Recent Activity / Timeline Decorative -->
+<section class="mt-xl flex flex-col gap-lg">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Recent Triumphs</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-2xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">auto_awesome</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">Unlocked <span class="font-bold">Early Bird</span></p>
+<p class="font-stat-label text-stat-label text-on-surface-variant">Yesterday at 7:42 AM</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-2xl flex items-center gap-md opacity-80">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">done_all</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">Unlocked <span class="font-bold">Perfect Week</span></p>
+<p class="font-stat-label text-stat-label text-on-surface-variant">3 days ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Background Elements (Scoped to main container) -->
+<div class="pointer-events-none fixed -z-10 bottom-0 left-0 w-full h-full overflow-hidden opacity-20">
+<div class="absolute -bottom-20 -left-20 w-96 h-96 bg-primary-container rounded-full blur-[120px]"></div>
+<div class="absolute top-1/4 -right-20 w-80 h-80 bg-secondary-container rounded-full blur-[100px]"></div>
+</div>
+</div>
+<style>
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.95; }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+</style>
+<script>
+  // Simple interaction: Click on locked badges to reveal a "How to Unlock" tooltip-style effect
+  document.querySelectorAll('.grayscale').forEach(badge => {
+    badge.addEventListener('click', () => {
+      badge.classList.add('scale-95');
+      setTimeout(() => badge.classList.remove('scale-95'), 150);
+      
+      // In a real app, this might open a modal or expanded view
+      const name = badge.querySelector('h3').textContent;
+      console.log(`Requirement for ${name}: Maintain your habits!`);
+    });
+  });
+
+  // Adding a "shimmer" effect to unlocked badges on hover
+  document.querySelectorAll('.shadow-all').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+       card.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
+  });
+</script></main></div></body></html>

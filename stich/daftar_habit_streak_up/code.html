@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={theme:{extend:{"colors":{"primary-fixed-dim":"#ffb59f","tertiary":"#006d43","on-tertiary-container":"#004a2c","inverse-primary":"#ffb59f","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","secondary-container":"#b7a8fe","secondary":"#6153a2","inverse-on-surface":"#f8edfc","outline":"#89726b","on-surface":"#1e1a23","background":"#fff7ff","surface-container-high":"#efe5f3","primary-container":"#ff8c69","on-primary-fixed":"#3a0a00","on-background":"#1e1a23","surface-tint":"#9e4225","surface-bright":"#fff7ff","outline-variant":"#dcc0b9","primary-fixed":"#ffdbd1","on-tertiary-fixed":"#002111","inverse-surface":"#342e39","surface-dim":"#e1d7e5","secondary-fixed-dim":"#cabeff","tertiary-fixed-dim":"#7ed9a5","primary":"#9e4225","on-error-container":"#93000a","on-primary":"#ffffff","tertiary-fixed":"#9af6c0","on-secondary-fixed":"#1c055b","on-tertiary":"#ffffff","on-primary-container":"#752409","surface-container-low":"#fbf0ff","surface-container":"#f5eaf9","surface":"#fff7ff","on-secondary-container":"#473986","surface-variant":"#e9dfed","on-secondary-fixed-variant":"#493a88","tertiary-container":"#63bd8b","secondary-fixed":"#e6deff","error-container":"#ffdad6","error":"#ba1a1a","surface-container-highest":"#e9dfed","on-primary-fixed-variant":"#7e2b10","on-error":"#ffffff","on-surface-variant":"#56423d","on-tertiary-fixed-variant":"#005232"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"lg":"40px","xs":"4px","sm":"12px","container-padding":"24px","xl":"64px","gutter":"16px","md":"24px","base":"8px"},"fontFamily":{"headline-lg-mobile":["Nunito Sans"],"headline-lg":["Nunito Sans"],"body-lg":["Nunito Sans"],"label-sm":["Nunito Sans"],"headline-md":["Nunito Sans"],"display":["Nunito Sans"],"body-md":["Nunito Sans"],"stat-label":["Space Mono"]},"fontSize":{"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"700"}],"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"stat-label":["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"400"}]}}}}</script><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&amp;family=Space+Mono&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col shadow-[4px_0_20px_rgba(158,66,37,0.05)]"><div class="px-md py-xl flex items-center gap-sm"><img alt="Streak Up habit tracker logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLviZrqu9Ub52-ES37sFTFuSWIAVCaoIcOdlZtyRAmSc9QwRX9BQvm2jIIk-UaG7AWOJoxU57A_-4Nllw4kPgWOeoX8kNwfEHz_0n8FYxhVHWvsrUZ-6uI-dUvH1cn3XrxC3Gn232Jz9ikGDdyX6pLve6cNw0CHkCQ4BmRAxBW4in5OF-BsPxN1TQrtABFY9LC3e83zxiDz1b9qoq6q4vuwpVnSeHWIRR53Xqe-ib1fT34b2ZzPT7q6RTL4"><span class="font-display text-headline-md text-primary tracking-tight">Streak Up</span></div><nav class="flex-1 px-sm space-y-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-[0_4px_12px_rgba(158,66,37,0.1)]"><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="dashboard" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">dashboard</span><span class="font-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center px-md py-sm rounded-xl transition-all group bg-primary-container text-on-primary-container font-bold shadow-[0_4px_12px_rgba(158,66,37,0.1)]" data-path="habits" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">checklist</span><span class="font-body-md">Habits</span></a><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="calendar" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">calendar_month</span><span class="font-body-md">Calendar</span></a><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="statistics" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">monitoring</span><span class="font-body-md">Statistics</span></a><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="achievements" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">emoji_events</span><span class="font-body-md">Achievements</span></a><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="reflection" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">edit_note</span><span class="font-body-md">Reflection</span></a><div class="my-md border-t border-outline-variant/30 mx-md"></div><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="profile" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">person</span><span class="font-body-md">Profile</span></a><a class="flex items-center px-md py-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all group" data-path="settings" href="#"><span class="material-symbols-outlined mr-sm group-hover:scale-110 transition-transform">settings</span><span class="font-body-md">Settings</span></a></nav><div class="p-md"><div class="bg-secondary-container/20 rounded-xl p-md border border-secondary-container/30"><p class="text-label-sm text-on-secondary-container mb-xs">CURRENT STREAK</p><p class="text-headline-md text-secondary font-bold">12 Days 🔥</p></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 flex items-center justify-between px-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-md"></div><div class="flex items-center gap-md"><button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high transition-colors text-on-surface-variant"><span class="material-symbols-outlined">search</span></button><button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high transition-colors text-on-surface-variant relative"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span></button><div class="flex items-center gap-sm ml-base"><div class="text-right hidden sm:block"><p class="text-label-sm font-bold text-on-surface">Alex Rivera</p><p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Premium Member</p></div><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20"><span class="material-symbols-outlined text-on-primary text-[20px]">person</span></div></div></div></header><main class="relative pt-20 min-h-screen"><div class="flex flex-col w-full px-xl py-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div class="relative">
+<div class="absolute -top-6 -left-6 w-24 h-24 bg-primary-container/20 rounded-full blur-3xl animate-pulse"></div>
+<h1 class="font-display text-display text-on-surface relative z-10">Kebiasaan Saya</h1>
+<p class="font-body-lg text-on-surface-variant mt-xs">Konsistensi adalah kunci dari transformasi diri.</p>
+</div>
+<button class="flex items-center justify-center gap-sm bg-primary text-on-primary px-xl py-md rounded-xl shadow-xl shadow-primary/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform duration-300">add</span>
+<span class="font-headline-md">Tambah Habit</span>
+</button>
+</div>
+<!-- Filter Categories -->
+<div class="flex items-center gap-sm overflow-x-auto pb-md no-scrollbar mb-lg">
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-primary text-on-primary font-bold shadow-md shadow-primary/10 transition-all">Semua</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Belajar</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Kesehatan</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Olahraga</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Produktivitas</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Hobi</button>
+<button class="flex-shrink-0 px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary-container/30 hover:text-primary transition-all">Mindful</button>
+</div>
+<!-- Habit Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Habit Card 1: Reading -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden">
+<!-- Hover Actions -->
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-primary-container/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">auto_stories</span>
+</div>
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest bg-primary-fixed/50 px-sm py-1 rounded-full">Belajar</span>
+<h3 class="font-headline-md text-on-surface mt-1">Membaca 10 Halaman</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-primary">12 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[70%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">70% Menuju Target</p>
+</div>
+</div>
+<!-- Habit Card 2: Water -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-secondary/5 transition-all duration-500 overflow-hidden">
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">water_drop</span>
+</div>
+<div>
+<span class="font-label-sm text-secondary uppercase tracking-widest bg-secondary-fixed/50 px-sm py-1 rounded-full">Kesehatan</span>
+<h3 class="font-headline-md text-on-surface mt-1">Minum 2L Air</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-secondary">24 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[100%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">Target Tercapai!</p>
+</div>
+</div>
+<!-- Habit Card 3: Meditation -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-tertiary/5 transition-all duration-500 overflow-hidden">
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">self_improvement</span>
+</div>
+<div>
+<span class="font-label-sm text-tertiary uppercase tracking-widest bg-tertiary-fixed/50 px-sm py-1 rounded-full">Mindful</span>
+<h3 class="font-headline-md text-on-surface mt-1">Meditasi Pagi</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-tertiary">5 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[40%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">Sedang Berjalan</p>
+</div>
+</div>
+<!-- Habit Card 4: Run -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden">
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-primary-container/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">directions_run</span>
+</div>
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest bg-primary-fixed/50 px-sm py-1 rounded-full">Olahraga</span>
+<h3 class="font-headline-md text-on-surface mt-1">Lari Sore 3KM</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-primary">8 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">Hampir Selesai!</p>
+</div>
+</div>
+<!-- Habit Card 5: Guitar -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-secondary/5 transition-all duration-500 overflow-hidden">
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">music_note</span>
+</div>
+<div>
+<span class="font-label-sm text-secondary uppercase tracking-widest bg-secondary-fixed/50 px-sm py-1 rounded-full">Hobi</span>
+<h3 class="font-headline-md text-on-surface mt-1">Latihan Gitar</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-secondary">15 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[60%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">Pertahankan Ritme</p>
+</div>
+</div>
+<!-- Habit Card 6: Journal -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:shadow-tertiary/5 transition-all duration-500 overflow-hidden">
+<div class="absolute top-4 right-4 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 bg-surface-bright rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<div class="flex items-start gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[32px]">edit_square</span>
+</div>
+<div>
+<span class="font-label-sm text-tertiary uppercase tracking-widest bg-tertiary-fixed/50 px-sm py-1 rounded-full">Mindful</span>
+<h3 class="font-headline-md text-on-surface mt-1">Jurnal Harian</h3>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<p class="font-stat-label text-on-surface-variant uppercase">Current Streak</p>
+<p class="font-headline-md text-tertiary">3 <span class="text-label-sm">Hari</span></p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[25%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="font-label-sm text-right text-on-surface-variant">Langkah Kecil</p>
+</div>
+</div>
+</div>
+<!-- Empty State Decorative Element (Optional) -->
+<div class="mt-xl p-xl border-t border-dashed border-outline-variant/30 flex flex-col items-center opacity-50">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-outline text-[40px]">spa</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">"Success is the sum of small efforts, repeated day in and day out."</p>
+</div>
+<script>
+    // Micro-interaction for category pills
+    document.querySelectorAll('.flex-shrink-0').forEach(pill => {
+      pill.addEventListener('click', function() {
+        // Remove active state from all
+        document.querySelectorAll('.flex-shrink-0').forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'shadow-md', 'shadow-primary/10');
+          p.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        });
+        // Add active state to clicked
+        this.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+        this.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'shadow-md', 'shadow-primary/10');
+      });
+    });
+
+    // Simple fade-in animation for cards on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.group');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</div></main></div></body></html>
