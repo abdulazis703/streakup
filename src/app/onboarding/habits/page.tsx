@@ -24,11 +24,11 @@ export default function HabitsSelectionPage() {
     <div
       style={{
         width: '100%',
-        maxWidth: '580px',
-        minWidth: '320px',
+        maxWidth: '520px',
+        minWidth: '300px',
         backgroundColor: '#ffffff',
         borderRadius: '32px',
-        padding: '32px',
+        padding: '28px 24px',
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
@@ -38,7 +38,7 @@ export default function HabitsSelectionPage() {
       }}
     >
       {/* Header Navigation Progress */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '32px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#A04223' }}>
           <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>local_fire_department</span>
           <span style={{ fontWeight: '800', fontSize: '16px', color: '#1e293b' }}>Streak Up</span>
@@ -61,18 +61,18 @@ export default function HabitsSelectionPage() {
         </div>
       </div>
 
-      {/* Judul & Deskripsi */}
-      <div style={{ textAlign: 'center', marginBottom: '28px', width: '100%' }}>
-        <h1 style={{ fontSize: '26px', fontWeight: '800', color: '#1e293b', marginBottom: '8px', lineHeight: '1.2' }}>
+      {/* Judul & Deskripsi — width:100% + display:block agar teks mengalir normal */}
+      <div style={{ textAlign: 'center', marginBottom: '20px', width: '100%' }}>
+        <h1 style={{ fontSize: '22px', fontWeight: '800', color: '#1e293b', marginBottom: '8px', lineHeight: '1.3', display: 'block' }}>
           Pilih kebiasaan pertamamu
         </h1>
-        <p style={{ fontSize: '14px', color: '#64748b', margin: '0 auto', maxWidth: '420px', lineHeight: '1.5' }}>
+        <p style={{ fontSize: '14px', color: '#64748b', lineHeight: '1.6', margin: '0', display: 'block', width: '100%' }}>
           Berdasarkan area fokusmu, kami merekomendasikan habit ini. Pilih 1–3 habit untuk permulaan.
         </p>
       </div>
 
-      {/* List Habit Items */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px', width: '100%', marginBottom: '24px' }}>
+      {/* List Habit Items — 1 kolom penuh agar kartu tidak terpotong di layar kecil */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', marginBottom: '16px' }}>
         {RECOMMENDED_HABITS.map((habit) => {
           const isSelected = selected.includes(habit.id);
           return (
@@ -80,24 +80,24 @@ export default function HabitsSelectionPage() {
               key={habit.id}
               onClick={() => toggleHabit(habit.id)}
               style={{
-                padding: '14px 16px',
-                borderRadius: '16px',
+                padding: '11px 14px',
+                borderRadius: '14px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
                 gap: '12px',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
                 border: isSelected ? '2px solid #A04223' : '2px solid #f1f5f9',
                 backgroundColor: isSelected ? '#fff7ed' : '#ffffff',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                width: '100%'
               }}
             >
               {/* Icon Box */}
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
@@ -106,7 +106,7 @@ export default function HabitsSelectionPage() {
                   backgroundColor: habit.color + '20'
                 }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '22px', color: habit.color }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '20px', color: habit.color }}>
                   {habit.icon}
                 </span>
               </div>
@@ -116,7 +116,7 @@ export default function HabitsSelectionPage() {
                 <h3 style={{ fontWeight: '700', color: '#1e293b', fontSize: '14px', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {habit.title}
                 </h3>
-                <p style={{ fontSize: '9px', fontWeight: '800', color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '2px 0 0 0' }}>
+                <p style={{ fontSize: '10px', fontWeight: '800', color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '2px 0 0 0' }}>
                   {habit.category}
                 </p>
               </div>
@@ -159,7 +159,7 @@ export default function HabitsSelectionPage() {
           border: 'none',
           backgroundColor: 'transparent',
           cursor: 'pointer',
-          marginBottom: '28px',
+          marginBottom: '20px',
           width: '100%'
         }}
       >
@@ -173,7 +173,6 @@ export default function HabitsSelectionPage() {
           href="/onboarding/ready"
           style={{
             width: '100%',
-            maxWidth: '360px',
             padding: '14px',
             borderRadius: '16px',
             fontWeight: '700',
