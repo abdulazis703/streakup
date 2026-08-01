@@ -9,7 +9,7 @@ export default function CTASection() {
   return (
     <section className="px-6 py-20">
       <motion.div
-        className="max-w-[1000px] w-full mx-auto rounded-[44px] p-10 md:p-16 relative overflow-hidden flex flex-col items-center text-center gap-7 border border-white/50"
+        className="max-w-[1000px] w-full mx-auto rounded-[44px] px-8 py-12 md:px-20 md:py-16 relative overflow-hidden flex flex-col items-center text-center gap-7 border border-white/50"
         style={{
           background: 'linear-gradient(135deg, rgba(255,107,157,0.85), rgba(192,132,252,0.85))',
           backdropFilter: 'blur(18px)',
@@ -51,14 +51,13 @@ export default function CTASection() {
         </motion.h2>
 
         <motion.p
-          className="text-orange-100 text-base md:text-lg font-medium max-w-xl relative z-10 leading-relaxed"
+          className="text-orange-100 text-base md:text-lg font-medium w-full max-w-2xl relative z-10 leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Bergabunglah dengan ribuan orang yang telah menemukan kebahagiaan dalam kebiasaan kecil
-          mereka.
+          Bergabunglah dengan ribuan orang yang telah menemukan kebahagiaan dalam kebiasaan kecil mereka.
         </motion.p>
 
         <div className="flex flex-col sm:flex-row gap-4 relative z-10 w-full sm:w-auto justify-center">
