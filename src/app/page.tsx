@@ -114,9 +114,9 @@ export default function LandingPage() {
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-transparent to-white/20 -z-10" />
             <div className="max-w-[1200px] w-full mx-auto">
               <div className="flex flex-col md:flex-row justify-between items-end gap-md mb-xl">
-                <div className="max-w-md">
+                <div>
                   <p className="font-stat-label text-label-sm text-primary uppercase tracking-[0.2em] mb-sm">Fitur Utama</p>
-                  <h2 className="font-headline-lg text-headline-lg text-on-surface">Didesain untuk ketenangan pikiran Anda.</h2>
+                  <h2 className="font-headline-lg text-headline-lg text-on-surface whitespace-nowrap">Didesain untuk ketenangan pikiran Anda.</h2>
                 </div>
                 <div className="h-[1px] flex-grow bg-outline-variant mx-lg hidden md:block mb-base"></div>
               </div>
