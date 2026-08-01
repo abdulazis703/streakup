@@ -63,11 +63,14 @@ export interface StatSummary {
 function generateCalendarData(totalHabits: number, currentStreak: number): CalendarDay[] {
   const days: CalendarDay[] = [];
   const today = new Date();
+  // Helper: format tanggal lokal (bukan UTC) agar sesuai timezone WIB
+  const toLocalDateStr = (d: Date) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
   for (let i = 59; i >= 0; i--) {
     const d = new Date(today);
     d.setDate(today.getDate() - i);
-    const dateStr = d.toISOString().split("T")[0];
+    const dateStr = toLocalDateStr(d);
 
     // Days in streak range have high completion
     const inStreak = i < currentStreak;
@@ -89,6 +92,7 @@ function generateCalendarData(totalHabits: number, currentStreak: number): Calen
 
   return days;
 }
+
 
 function generateReflections(): ReflectionEntry[] {
   const moods: { mood: 1 | 2 | 3 | 4 | 5; label: string }[] = [

@@ -10,7 +10,10 @@ export default function CalendarPage() {
   const { calendarData, habits, stats } = useAppData();
   const [selectedDay, setSelectedDay] = useState<typeof calendarData[0] | null>(null);
 
-  const today = new Date().toISOString().split('T')[0];
+  // Gunakan tanggal lokal (bukan UTC) agar sesuai timezone WIB
+  const toLocalDateStr = (d: Date) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const today = toLocalDateStr(new Date());
 
   const getColorForRate = (rate: number) => {
     if (rate === 0) return '#e9dfed';
@@ -33,7 +36,7 @@ export default function CalendarPage() {
 
   const monthDays = Array.from({ length: daysInMonth }, (_, i) => {
     const d = new Date(year, month, i + 1);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = toLocalDateStr(d); // pakai local date agar tidak bergeser timezone
     const calDay = calendarData.find((c) => c.date === dateStr);
     return {
       date: dateStr,
