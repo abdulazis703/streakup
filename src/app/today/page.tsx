@@ -118,35 +118,49 @@ export default function TodayPage() {
           </p>
         </div>
 
-        {/* Progress Overview */}
-        <div className="glass-card rounded-[2rem] p-xl mb-xl">
-          <div className="flex items-center justify-between mb-md">
+        {/* Progress Overview - Glassmorphism & Disney Cartoon Aesthetic */}
+        <div className="relative overflow-hidden backdrop-blur-xl bg-white/40 dark:bg-slate-800/40 border-[3px] border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_4px_12px_rgba(255,255,255,0.4)] rounded-[2.5rem] p-xl mb-xl transition-all duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.15)] hover:-translate-y-1">
+          {/* Subtle cartoon reflection on top */}
+          <div className="absolute top-2 left-[10%] right-[10%] h-4 bg-white/30 blur-[4px] rounded-full opacity-60 pointer-events-none" />
+          
+          <div className="flex items-center justify-between mb-lg relative z-10">
             <div>
-              <p className="text-label-sm font-stat-label text-on-surface-variant uppercase tracking-widest mb-xs">Progress Hari Ini</p>
-              <p className="text-headline-md font-display text-on-surface">{completed} / {totalHabits} Habit</p>
+              <p className="text-label-sm font-stat-label text-slate-600 dark:text-slate-300 uppercase tracking-widest mb-xs font-bold drop-shadow-sm">Progress Hari Ini</p>
+              <div className="flex items-baseline gap-1">
+                <p className="text-[2.75rem] leading-none font-display text-slate-800 dark:text-white drop-shadow-sm">{completed}</p>
+                <p className="text-2xl font-display text-slate-500 dark:text-slate-400">/ {totalHabits}</p>
+              </div>
             </div>
             <div className="text-right">
-              <p className="text-label-sm font-stat-label text-on-surface-variant uppercase tracking-widest mb-xs">XP Diperoleh</p>
-              <p className="text-headline-md font-display text-tertiary">+{totalXP} XP</p>
+              <p className="text-label-sm font-stat-label text-slate-600 dark:text-slate-300 uppercase tracking-widest mb-xs font-bold drop-shadow-sm">XP Diperoleh</p>
+              <p className="text-[2.75rem] leading-none font-display text-amber-500 drop-shadow-sm">+{totalXP}</p>
             </div>
           </div>
-          <div className="w-full h-4 bg-surface-container-high rounded-full overflow-hidden">
+          
+          {/* Cartoon Progress Bar */}
+          <div className="relative w-full h-10 bg-slate-200/50 dark:bg-slate-700/50 rounded-full border-[3px] border-white/80 shadow-[inset_0_2px_6px_rgba(0,0,0,0.15)] p-[3px] z-10 overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all duration-700 ease-out ${allDone ? 'bg-tertiary' : 'bg-primary'}`}
+              className={`relative h-full rounded-full transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${allDone ? 'bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400' : 'bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500'}`}
               style={{ width: `${progress}%` }}
-            />
+            >
+              {/* Progress Bar Highlight (Cartoon shine) */}
+              <div className="absolute top-0 left-0 right-0 h-[40%] bg-white/40 rounded-t-full" />
+            </div>
           </div>
-          <div className="flex justify-between mt-xs">
-            <span className="text-label-sm text-on-surface-variant">{progress}% selesai</span>
-            <span className="text-label-sm text-on-surface-variant">{totalHabits - completed} tersisa</span>
+          
+          <div className="flex justify-between mt-sm relative z-10">
+            <span className="text-label-sm font-bold text-slate-600 dark:text-slate-300 drop-shadow-sm">{progress}% selesai</span>
+            <span className="text-label-sm font-bold text-slate-600 dark:text-slate-300 drop-shadow-sm">{totalHabits - completed} tersisa</span>
           </div>
 
           {allDone && (
-            <div className="mt-lg p-md bg-tertiary-fixed rounded-2xl flex items-center gap-md">
-              <span className="material-symbols-outlined text-tertiary text-[36px]" style={{ fontVariationSettings: "'FILL' 1" }}>celebration</span>
+            <div className="mt-lg p-md bg-gradient-to-r from-amber-200/80 to-yellow-400/80 border-2 border-white/80 rounded-[1.5rem] flex items-center gap-md shadow-lg transform transition-transform hover:scale-[1.02] z-10 relative">
+              <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center shadow-inner shrink-0">
+                <span className="material-symbols-outlined text-amber-600 text-[32px]" style={{ fontVariationSettings: "'FILL' 1" }}>celebration</span>
+              </div>
               <div>
-                <p className="font-bold text-on-surface">Hari yang sempurna! 🎉</p>
-                <p className="text-body-md text-on-surface-variant">Semua habit selesai! +15 XP bonus Perfect Day</p>
+                <p className="font-display text-xl text-slate-800 drop-shadow-sm">Hari yang sempurna! 🎉</p>
+                <p className="text-body-sm font-bold text-slate-700">Semua habit selesai! +15 XP bonus Perfect Day</p>
               </div>
             </div>
           )}
